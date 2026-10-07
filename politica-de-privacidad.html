@@ -162,6 +162,9 @@
     };
     btn.addEventListener("click", () => setOpen(menu.classList.contains("hidden")));
     menu.addEventListener("click", (e) => { if (e.target.closest("a")) setOpen(false); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.classList.contains("hidden")) { setOpen(false); btn.focus(); }
+    });
   })();
 </script>
 </header>

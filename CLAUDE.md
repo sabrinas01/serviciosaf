@@ -28,7 +28,7 @@ El alcance y las decisiones de producto están en [Documentacion/LeanPRD.md](Doc
 | Archivo | Contenido |
 | --- | --- |
 | `index.html` | Inicio: hero con foto, problemas frecuentes "lo que suele pasar" (01–06), "el puente técnico" antes/después, CTA |
-| `servicios.html` | Sección `#servicios`: 3 etapas contratables por separado (Diagnóstico funcional, Documentación básica, Documentación complementaria), cada una con su entregable, CTA |
+| `servicios.html` | Sección `#servicios`: 3 etapas contratables por separado (Diagnóstico funcional, Documentación básica, Documentación complementaria), cada una con su plazo (72 hs hábiles, 2 y 4 semanas), su entregable y un botón "Ver detalle" que abre un modal (`<dialog>` nativo) con descripción, qué incluye, ejemplo y CTA a la agenda. CTA |
 | `politica-de-privacidad.html` | Política de privacidad (qué recolectan GA4 y Clarity, cookies, terceros, derechos según la Ley 25.326). Se enlaza desde el footer de todas las páginas. Sin JSON-LD ni CTA |
 | `sobre-mi.html` | Bio en `#sobre-mi` con `assets/perfil-sabrina.png`, línea de tiempo profesional en `#timeline-section` (2021–2025, más una card destacada "Hoy"). Sin CTA |
 
@@ -53,7 +53,7 @@ No hay includes ni parciales. Cada página tiene su propia copia completa de:
 
 **Si agregás o cambiás qué datos se recolectan** (una herramienta de medición nueva, un formulario, cookies nuevas), actualizá `politica-de-privacidad.html` y su fecha de "Última actualización".
 
-La navegación de escritorio es `hidden md:flex`. En mobile hay un botón hamburguesa (`[data-menu-toggle]`) que abre `#menu-mobile`, un nav con los mismos links y el botón "Charlemos", más un script inline al final del `<header>`. Si cambiás un link del nav, cambialo también en `#menu-mobile`.
+La navegación de escritorio es `hidden md:flex`. En mobile hay un botón hamburguesa (`[data-menu-toggle]`) que abre `#menu-mobile`, un nav con los mismos links y el botón "Charlemos", más un script inline al final del `<header>` (abre y cierra con el botón, al tocar un link y con Escape, que devuelve el foco al botón). Si cambiás un link del nav, cambialo también en `#menu-mobile`.
 
 ## Tokens de diseño
 
@@ -98,7 +98,9 @@ El PRD exige WCAG 2.1 AA. Las 3 páginas pasan axe-core sin violaciones; manten�
   - `clic_timeline_charlemos` (solo en sobre-mi, card "Hoy")
   - `clic_rrss` con `{ red: linkedin|instagram|github|email, location: sobre_mi_bio }`: botones de redes debajo de la bio de sobre-mi. Las URLs son las mismas del footer; si cambia una, cambiala en los dos lugares.
   - `clic_hero_charlemos` y `clic_hero_servicios` (solo en index)
-  - `clic_agendar_reunion`: botón "AGENDAR REUNIÓN" del CTA, que abre `https://calendar.notion.so/meet/sabrysanscaadas/bitacorait` en otra pestaña. Es la métrica de conversión del PRD.
+  - `clic_agendar_reunion`: botón "AGENDAR REUNIÓN" del CTA, que abre `https://calendar.notion.so/meet/sabrysanscaadas/bitacorait` en otra pestaña. Es la métrica de conversión del PRD. Los modales de servicios usan el mismo evento con `location: modal_etapa_01|02|03`.
+  - `clic_ver_detalle_etapa` con `{ etapa: 01|02|03 }`: botón "Ver detalle" de cada card de servicios.
+- Los modales de servicios son `<dialog>` abiertos con `showModal()`: el navegador ya maneja el foco y el cierre con Escape. Si cambiás el plazo, el entregable o lo que incluye una etapa, cambialo en la card y en su modal.
 - El CTA `#contacto` solo está en `index.html` y `servicios.html`. `sobre-mi.html` no tiene, así que su botón "Charlemos" del header y el link de la card "Hoy" apuntan a `index.html#contacto`.
 
 ## SEO
