@@ -1,0 +1,14 @@
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Documentos internos (precios, valor hora, notas privadas): nunca se suben, el repo es público
+Documentacion/privado/
+*.privado.md
