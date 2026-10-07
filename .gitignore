@@ -9,6 +9,9 @@
 *.sln
 *.sw?
 
+# Dependencias de npm (Tailwind): se instalan con `npm install`
+node_modules/
+
 # Documentos internos (precios, valor hora, notas privadas): nunca se suben, el repo es público
 Documentacion/privado/
 *.privado.md

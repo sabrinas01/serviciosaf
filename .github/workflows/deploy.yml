@@ -30,6 +30,19 @@ jobs:
         with:
           persist-credentials: false
 
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+
+      # Se vuelve a compilar el CSS de Tailwind a partir de los HTML, así lo publicado
+      # siempre coincide con las clases actuales aunque no se haya compilado en local.
+      # npm ci instala exactamente las versiones de package-lock.json.
+      - name: Compilar CSS de Tailwind
+        run: |
+          npm ci --ignore-scripts
+          npm run build:css
+
       # Solo se publican los archivos del sitio: la documentación y la config quedan afuera.
       - name: Preparar archivos del sitio
         run: |

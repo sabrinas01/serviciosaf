@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- Seguridad: dominios permitidos (ver CLAUDE.md > Seguridad antes de agregar un script o servicio externo) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJFKG629HC"></script>
@@ -37,179 +37,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&amp;family=Jetbrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "on-tertiary-container": "#979793",
-                "secondary": "#8dd4c0",
-                "inverse-on-surface": "#303030",
-                "primary-fixed": "#c2ecd6",
-                "primary-container": "#0f3627",
-                "on-tertiary-fixed": "#1a1c19",
-                "on-secondary-fixed": "#002019",
-                "tertiary-fixed": "#e3e3de",
-                "surface-container": "#1f2020",
-                "error-container": "#93000a",
-                "on-surface": "#e4e2e1",
-                "on-primary-fixed": "#002115",
-                "on-primary": "#103728",
-                "surface-container-high": "#2a2a2a",
-                "secondary-container": "#005849",
-                "on-secondary-fixed-variant": "#005143",
-                "on-primary-fixed-variant": "#294e3d",
-                "error": "#ffb4ab",
-                "surface-dim": "#131313",
-                "secondary-fixed": "#a8f1dc",
-                "outline-variant": "#414844",
-                "surface-variant": "#353535",
-                "on-error-container": "#ffdad6",
-                "tertiary-container": "#2e302d",
-                "inverse-surface": "#e4e2e1",
-                "on-secondary": "#00382d",
-                "primary": "#a7d0ba",
-                "outline": "#8b938d",
-                "on-tertiary": "#2f312e",
-                "on-tertiary-fixed-variant": "#464744",
-                "surface-container-highest": "#353535",
-                "surface-container-lowest": "#0e0e0e",
-                "surface": "#131313",
-                "on-primary-container": "#78a08c",
-                "secondary-fixed-dim": "#8dd4c0",
-                "surface-container-low": "#1b1c1c",
-                "on-background": "#e4e2e1",
-                "inverse-primary": "#406654",
-                "surface-bright": "#393939",
-                "tertiary-fixed-dim": "#c7c7c2",
-                "surface-tint": "#a7d0ba",
-                "on-surface-variant": "#c1c8c2",
-                "on-error": "#690005",
-                "tertiary": "#c7c7c2",
-                "primary-fixed-dim": "#a7d0ba",
-                "background": "#131313",
-                "on-secondary-container": "#85cdb9",
-                "teal-accent": "#367E6D"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.125rem",
-                "lg": "0.25rem",
-                "xl": "0.5rem",
-                "full": "0.75rem"
-        },
-        "spacing": {
-                "max-width": "1080px",
-                "base": "4px",
-                "unit": "7px",
-                "section-v-md": "70px",
-                "margin-page": "28px",
-                "gutter": "28px",
-                "section-v-lg": "84px",
-                "grid-gap": "20px"
-        },
-        "fontFamily": {
-                "display-h1": [
-                        "Rubik"
-                ],
-                "mono-eyebrow": [
-                        "JetBrains Mono"
-                ],
-                "body-small": [
-                        "Rubik"
-                ],
-                "section-h2": [
-                        "Rubik"
-                ],
-                "ui-action": [
-                        "JetBrains Mono"
-                ],
-                "mono-data": [
-                        "JetBrains Mono"
-                ],
-                "display-h1-mobile": [
-                        "Rubik"
-                ],
-                "card-h3": [
-                        "Rubik"
-                ],
-                "body-main": [
-                        "Rubik"
-                ]
-        },
-        "fontSize": {
-                "display-h1": [
-                        "54px",
-                        {
-                                "lineHeight": "1.08",
-                                "letterSpacing": "-0.02em",
-                                "fontWeight": "900"
-                        }
-                ],
-                "mono-eyebrow": [
-                        "12px",
-                        {
-                                "lineHeight": "1",
-                                "letterSpacing": "0.08em",
-                                "fontWeight": "600"
-                        }
-                ],
-                "body-small": [
-                        "15px",
-                        {
-                                "lineHeight": "1.5",
-                                "fontWeight": "400"
-                        }
-                ],
-                "section-h2": [
-                        "32px",
-                        {
-                                "lineHeight": "1.2",
-                                "letterSpacing": "-0.01em",
-                                "fontWeight": "900"
-                        }
-                ],
-                "ui-action": [
-                        "12.5px",
-                        {
-                                "lineHeight": "1",
-                                "fontWeight": "500"
-                        }
-                ],
-                "mono-data": [
-                        "13px",
-                        {
-                                "lineHeight": "1.4",
-                                "fontWeight": "500"
-                        }
-                ],
-                "display-h1-mobile": [
-                        "32px",
-                        {
-                                "lineHeight": "1.1",
-                                "fontWeight": "900"
-                        }
-                ],
-                "card-h3": [
-                        "18px",
-                        {
-                                "lineHeight": "1.4",
-                                "fontWeight": "700"
-                        }
-                ],
-                "body-main": [
-                        "17.5px",
-                        {
-                                "lineHeight": "1.5",
-                                "fontWeight": "400"
-                        }
-                ]
-        }
-},
-    },
-  }
-</script>
+<link href="assets/css/tailwind.css" rel="stylesheet"/>
 <style>
   body {
     background-color: #131313;
@@ -344,7 +172,7 @@
 <span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-4 block">legal</span>
 <h1 class="font-section-h2 text-section-h2 text-primary mb-4">Política de privacidad</h1>
 <p class="font-mono-data text-mono-data text-on-surface-variant mb-10">Última actualización: 6 de octubre de 2026</p>
-<div class="space-y-10 font-body-small text-body-small text-on-surface-variant [&_h2]:font-card-h3 [&_h2]:text-card-h3 [&_h2]:text-primary [&_h2]:mb-3 [&_p]:mb-3 [&_ul]:space-y-2 [&_ul]:mb-3 [&_li]:relative [&_li]:pl-6 [&_li]:before:content-['&gt;'] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:text-secondary [&_a]:text-secondary [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-secondary-fixed [&_strong]:text-on-surface">
+<div class="space-y-10 font-body-small text-body-small text-on-surface-variant [&_h2]:font-card-h3 [&_h2]:text-card-h3 [&_h2]:text-primary [&_h2]:mb-3 [&_p]:mb-3 [&_ul]:space-y-2 [&_ul]:mb-3 [&_li]:relative [&_li]:pl-6 [&_li]:before:content-['>'] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:text-secondary [&_a]:text-secondary [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-secondary-fixed [&_strong]:text-on-surface">
 <div>
 <h2>Quién es responsable</h2>
 <p>Este sitio es de <strong>Sabrina Sanso</strong> (Bitácora IT), analista funcional con domicilio en San Juan, Argentina. Para cualquier consulta sobre tus datos podés escribirme a <a href="mailto:sanso.s@outlook.com">sanso.s@outlook.com</a>.</p>
