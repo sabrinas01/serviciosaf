@@ -1,3 +1,138 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+  Configuración de Tailwind 4 del sitio: es la única fuente (en v4 ya no hay
+  tailwind.config.js). Los tokens de diseño están en @theme.
+  Después de cambiar clases en los HTML o este archivo, corré `npm run build:css`.
+*/
+@import 'tailwindcss' source(none);
+@source '../*.html';
+
+@plugin '@tailwindcss/forms';
+
+/* Modo oscuro por clase (<html class="dark">), igual que en v3. */
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-on-tertiary-container: #979793;
+  --color-secondary: #8dd4c0;
+  --color-inverse-on-surface: #303030;
+  --color-primary-fixed: #c2ecd6;
+  --color-primary-container: #0f3627;
+  --color-on-tertiary-fixed: #1a1c19;
+  --color-on-secondary-fixed: #002019;
+  --color-tertiary-fixed: #e3e3de;
+  --color-surface-container: #1f2020;
+  --color-error-container: #93000a;
+  --color-on-surface: #e4e2e1;
+  --color-on-primary-fixed: #002115;
+  --color-on-primary: #103728;
+  --color-surface-container-high: #2a2a2a;
+  --color-secondary-container: #005849;
+  --color-on-secondary-fixed-variant: #005143;
+  --color-on-primary-fixed-variant: #294e3d;
+  --color-error: #ffb4ab;
+  --color-surface-dim: #131313;
+  --color-secondary-fixed: #a8f1dc;
+  --color-outline-variant: #414844;
+  --color-surface-variant: #353535;
+  --color-on-error-container: #ffdad6;
+  --color-tertiary-container: #2e302d;
+  --color-inverse-surface: #e4e2e1;
+  --color-on-secondary: #00382d;
+  --color-primary: #a7d0ba;
+  --color-outline: #8b938d;
+  --color-on-tertiary: #2f312e;
+  --color-on-tertiary-fixed-variant: #464744;
+  --color-surface-container-highest: #353535;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface: #131313;
+  --color-on-primary-container: #78a08c;
+  --color-secondary-fixed-dim: #8dd4c0;
+  --color-surface-container-low: #1b1c1c;
+  --color-on-background: #e4e2e1;
+  --color-inverse-primary: #406654;
+  --color-surface-bright: #393939;
+  --color-tertiary-fixed-dim: #c7c7c2;
+  --color-surface-tint: #a7d0ba;
+  --color-on-surface-variant: #c1c8c2;
+  --color-on-error: #690005;
+  --color-tertiary: #c7c7c2;
+  --color-primary-fixed-dim: #a7d0ba;
+  --color-background: #131313;
+  --color-on-secondary-container: #85cdb9;
+  --color-teal-accent: #367e6d;
+
+  --radius: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  --spacing-max-width: 1080px;
+  --spacing-base: 4px;
+  --spacing-unit: 7px;
+  --spacing-section-v-md: 70px;
+  --spacing-margin-page: 28px;
+  --spacing-gutter: 28px;
+  --spacing-section-v-lg: 84px;
+  --spacing-grid-gap: 20px;
+
+  --font-display-h1: Rubik;
+  --font-mono-eyebrow: 'JetBrains Mono';
+  --font-body-small: Rubik;
+  --font-section-h2: Rubik;
+  --font-ui-action: 'JetBrains Mono';
+  --font-mono-data: 'JetBrains Mono';
+  --font-display-h1-mobile: Rubik;
+  --font-card-h3: Rubik;
+  --font-body-main: Rubik;
+
+  --text-display-h1: 54px;
+  --text-display-h1--line-height: 1.08;
+  --text-display-h1--letter-spacing: -0.02em;
+  --text-display-h1--font-weight: 900;
+  --text-mono-eyebrow: 12px;
+  --text-mono-eyebrow--line-height: 1;
+  --text-mono-eyebrow--letter-spacing: 0.08em;
+  --text-mono-eyebrow--font-weight: 600;
+  --text-body-small: 15px;
+  --text-body-small--line-height: 1.5;
+  --text-body-small--font-weight: 400;
+  --text-section-h2: 32px;
+  --text-section-h2--line-height: 1.2;
+  --text-section-h2--letter-spacing: -0.01em;
+  --text-section-h2--font-weight: 900;
+  --text-ui-action: 12.5px;
+  --text-ui-action--line-height: 1;
+  --text-ui-action--font-weight: 500;
+  --text-mono-data: 13px;
+  --text-mono-data--line-height: 1.4;
+  --text-mono-data--font-weight: 500;
+  --text-display-h1-mobile: 32px;
+  --text-display-h1-mobile--line-height: 1.1;
+  --text-display-h1-mobile--font-weight: 900;
+  --text-card-h3: 18px;
+  --text-card-h3--line-height: 1.4;
+  --text-card-h3--font-weight: 700;
+  --text-body-main: 17.5px;
+  --text-body-main--line-height: 1.5;
+  --text-body-main--font-weight: 400;
+}
+
+/*
+  Compatibilidad con v3: en Tailwind 4 el color de borde por defecto pasó a
+  ser currentcolor y los botones dejaron de tener cursor: pointer. Estas
+  reglas mantienen el aspecto que tenía el sitio con v3.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
