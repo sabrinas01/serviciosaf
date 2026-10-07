@@ -6,6 +6,20 @@ Las versiones son 0.x porque el sitio todavía no está publicado. La 1.0.0 qued
 
 ---
 
+## Versión 0.11.0
+
+**Fecha de actualización:** 6 de octubre de 2026
+
+- **Migración a Tailwind 4 (4.3.0).** Se hizo con la herramienta oficial `@tailwindcss/upgrade` y después se revisó a mano. Ya no existe `tailwind.config.js`: los tokens de diseño pasaron al bloque `@theme` de `src/tailwind.css`. La compilación usa `@tailwindcss/cli`. Se quitó el plugin `@tailwindcss/container-queries`, porque v4 ya las incluye y el sitio no las usaba.
+  - **Por qué:** resuelve las vulnerabilidades de `braces` y `postcss-selector-parser` que quedaron pendientes en la 0.10.0. Ahora `npm audit` da 0 vulnerabilidades.
+  - **Por qué 4.3.0 y no la última:** desde la 4.3.1, `@tailwindcss/cli` fija una versión de `@parcel/watcher` que vuelve a traer la vulnerabilidad de `braces`.
+- **Se verificó que el sitio se ve igual:** se compararon los estilos calculados de cada elemento de las 4 páginas, en escritorio y en celular, entre la versión con Tailwind 3 y la de Tailwind 4. No cambia ninguna posición, tamaño, color ni tipografía.
+  - **Ajustes para lograrlo:** en v4 las utilidades van en una capa de CSS, y el CSS de Material Symbols (que no tiene capa) les ganaba. Por eso los íconos se veían más grandes (24px en lugar de 16px). Los tamaños de los íconos ahora llevan `!` (por ejemplo `text-base!`).
+  - El degradado radial del CTA se pasó a la utilidad nativa `bg-radial-[...]`, porque la forma de v3 dejó de funcionar.
+  - Se agregaron reglas de compatibilidad para el color de borde por defecto y el cursor de los botones.
+  - **Por qué:** igual que en la 0.10.0, el objetivo era cambiar la herramienta sin cambiar cómo se ve el sitio.
+- **README:** la sección "Documentación" ahora tiene una tabla con el Lean PRD y el historial de cambios, cada uno con una breve descripción.
+
 ## Versión 0.10.0
 
 **Fecha de actualización:** 6 de octubre de 2026
