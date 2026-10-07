@@ -4,7 +4,7 @@ Sitio de los servicios de análisis funcional y documentación de software de Sa
 
 **Sitio publicado:** <https://sabrinas01.github.io/serviciosaf/>
 
-Es un sitio estático en HTML con Tailwind por CDN. No requiere build ni instalar dependencias.
+Es un sitio estático en HTML con Tailwind compilado. Para verlo en local: `npm install`, `npm run build:css` y servir la carpeta (por ejemplo con `npx serve .`).
 
 ## Desarrollo
 

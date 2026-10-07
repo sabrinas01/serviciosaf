@@ -6,6 +6,19 @@ Las versiones son 0.x porque el sitio todavía no está publicado. La 1.0.0 qued
 
 ---
 
+## Versión 0.10.0
+
+**Fecha de actualización:** 6 de octubre de 2026
+
+- **Tailwind compilado en lugar del CDN.** El sitio ya no ejecuta el JavaScript de `cdn.tailwindcss.com`: carga un archivo CSS propio (`assets/css/tailwind.css`, 38 KB), generado con Tailwind 3.4.17, la misma versión que servía el CDN. La configuración, que estaba copiada en las 4 páginas, pasó a un solo archivo (`tailwind.config.js`). El workflow compila el CSS antes de cada publicación.
+  - **Por qué:** era el riesgo pendiente de la auditoría de seguridad. Si el CDN se veía comprometido o se caía, el sitio quedaba expuesto o sin estilos, y el propio Tailwind advierte que el CDN no es para producción. Además, ahora la página no espera a que un script genere los estilos, lo que ayuda al LCP ≤ 2,5 s que pide el PRD. La CSP quedó más estricta: ya no permite `cdn.tailwindcss.com`.
+- **Se verificó que el sitio se ve igual:** se compararon los estilos calculados de cada elemento de las 4 páginas, en escritorio y en celular, entre la versión con CDN y la compilada.
+  - Para lograr 0 diferencias se corrigieron 5 elementos con dos tamaños de letra a la vez (el botón "CHARLEMOS" y los años de la trayectoria). También se cambiaron las clases con `&gt;` por `>`, y se compila sin minificar porque el minificador redondeaba los colores con transparencia.
+  - **Por qué:** el CDN y el compilado resuelven distinto las clases que se contradicen. El objetivo era cambiar cómo se sirven los estilos sin cambiar cómo se ve el sitio.
+  - **Única diferencia, intencional:** la línea vertical de la trayectoria en Sobre Mí ahora queda centrada sobre los puntos. Antes estaba corrida 1px, porque el CSS de la animación anulaba el centrado (`-translate-x-1/2`). El centrado pasó al CSS de la animación.
+- **`npm audit` reporta vulnerabilidades en dependencias de Tailwind 3** (`braces`, `postcss-selector-parser`): son de denegación de servicio y solo afectan a la compilación.
+  - **Por qué no se corrigieron:** no hay versión corregida dentro de Tailwind 3. Solo procesan nuestros propios HTML y no llegan al sitio publicado. Se resuelven al migrar a Tailwind 4, que cambia el formato de configuración y el CSS base.
+
 ## Versión 0.9.0
 
 **Fecha de actualización:** 6 de octubre de 2026
