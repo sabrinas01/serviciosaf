@@ -70,6 +70,17 @@ El PRD exige WCAG 2.1 AA. Las 3 páginas pasan axe-core sin violaciones; manten�
 - El foco de teclado se ve con un contorno de `#8dd4c0` (`a:focus-visible, button:focus-visible` en el `<style>` de cada página).
 - Si un link tiene `aria-label`, este incluye el texto visible (por ejemplo "Email: enviar correo…"), por el criterio 2.5.3.
 
+## Seguridad
+
+- Cada página tiene una **Content-Security-Policy** en un `<meta http-equiv>` al principio del `<head>` (GitHub Pages no permite configurar cabeceras HTTP). Solo permite cargar scripts, estilos, fuentes, imágenes y conexiones de los dominios del sitio: Tailwind CDN, Google Fonts, GA4 y Clarity.
+  - **Si agregás un script, una fuente, un embed o un servicio externo nuevo, sumá su dominio a la CSP de las 4 páginas.** Si no, el navegador lo bloquea en silencio. Para verificarlo, abrí la consola del navegador: cada bloqueo aparece como error "Refused to … because it violates the following Content Security Policy directive".
+  - `script-src` y `style-src` permiten `'unsafe-inline'` porque el sitio usa scripts y estilos inline (config de Tailwind, GA4, Clarity, tracking, menú). Si algún día se compila Tailwind y se mueven los scripts a archivos `.js`, se puede quitar y la CSP queda más estricta.
+  - `form-action 'none'` y `frame-src 'none'`: el sitio no tiene formularios ni iframes. Si se agrega alguno, hay que habilitarlo en la CSP.
+- `<meta name="referrer" content="strict-origin-when-cross-origin">`: a los sitios externos solo les llega el dominio, nunca la ruta completa.
+- Todos los links con `target="_blank"` llevan `rel="noopener"`.
+- El workflow de despliegue fija cada action a un commit (SHA) con el número de versión en un comentario, y usa permisos mínimos.
+- En el repo están activos el escaneo de secretos y la protección contra subir secretos (push protection).
+
 ## Analítica
 
 - GA4 (`G-LJFKG629HC`) y Microsoft Clarity (`ytqqzs6u98`) están en el `<head>` de cada página. Si cambia un ID, reemplazalo en las 4 páginas (el de GA4 aparece 2 veces por página).
