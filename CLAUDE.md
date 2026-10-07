@@ -10,10 +10,16 @@ El alcance y las decisiones de producto están en [Documentacion/LeanPRD.md](Doc
 
 ## Stack
 
-- HTML estático puro: sin build, sin `package.json`, sin framework y sin tests.
-- Tailwind se carga en tiempo de ejecución desde el Play CDN (`cdn.tailwindcss.com?plugins=forms,container-queries`), y cada página lo configura inline en `<script id="tailwind-config">`.
+- HTML estático, sin framework y sin tests. El único paso de build es compilar el CSS de Tailwind.
+- **Tailwind 3.4.17 compilado** (no el CDN). La configuración está en `tailwind.config.js` (única fuente), la entrada en `src/tailwind.css` y la salida en `assets/css/tailwind.css`, que cada página enlaza con un `<link>`. Los plugins son `@tailwindcss/forms` y `@tailwindcss/container-queries`, igual que tenía el CDN.
+  - **Después de agregar o cambiar clases en un HTML, corré `npm run build:css`** (o `npm run watch:css` mientras editás). Si no, la clase nueva no tiene estilo en local. El workflow vuelve a compilar antes de publicar, así que lo publicado nunca queda desactualizado.
+  - Commiteá también `assets/css/tailwind.css`, para que el sitio se pueda ver en local sin instalar nada.
+  - El CSS se compila **sin `--minify`**: el minificador convertía los colores con transparencia (por ejemplo `bg-surface/90`) a `hsla()` y los redondeaba. GitHub Pages ya los comprime al enviarlos.
+  - No pongas dos utilidades que pisan la misma propiedad en el mismo elemento (por ejemplo `text-ui-action` y `text-base`): el CSS compilado decide cuál gana por el orden de las reglas, no por el orden de las clases en el HTML.
+  - Dentro de `class`, escribí los caracteres tal cual y no como entidades HTML: `before:content-['>']`, nunca `content-['&gt;']`. El compilador lee el texto del archivo y no reconoce la entidad.
+  - `npm audit` reporta vulnerabilidades de denegación de servicio en dependencias de Tailwind 3 (`braces`, `postcss-selector-parser`). Solo afectan a la compilación, que procesa nuestros propios HTML, y no llegan al sitio publicado. No hay arreglo dentro de Tailwind 3; se resuelven migrando a Tailwind 4.
 - Las fuentes vienen de Google Fonts: Rubik (texto y títulos), JetBrains Mono (eyebrows, acciones de UI y datos) y Material Symbols Outlined (íconos).
-- Para verlo localmente, abrí una página en el navegador o serví la carpeta con un servidor estático, por ejemplo `npx serve .`.
+- Para verlo localmente: `npm install` (una sola vez), `npm run build:css`, y servir la carpeta con un servidor estático, por ejemplo `npx serve .`.
 
 ## Páginas
 
@@ -30,7 +36,7 @@ Las páginas se enlazan entre sí con rutas relativas a los `.html`. Inicio y Se
 
 No hay includes ni parciales. Cada página tiene su propia copia completa de:
 
-- el `<head>` (GA4, Microsoft Clarity, meta SEO, JSON-LD, fuentes, config de Tailwind, `<style>` propio y los scripts de animación al scroll y de tracking)
+- el `<head>` (GA4, Microsoft Clarity, meta SEO, JSON-LD, fuentes, el `<link>` al CSS de Tailwind, `<style>` propio y los scripts de animación al scroll y de tracking)
 - el header con la navegación
 - el bloque CTA `#contacto` (solo en index y servicios)
 - el footer
@@ -72,9 +78,9 @@ El PRD exige WCAG 2.1 AA. Las 3 páginas pasan axe-core sin violaciones; manten�
 
 ## Seguridad
 
-- Cada página tiene una **Content-Security-Policy** en un `<meta http-equiv>` al principio del `<head>` (GitHub Pages no permite configurar cabeceras HTTP). Solo permite cargar scripts, estilos, fuentes, imágenes y conexiones de los dominios del sitio: Tailwind CDN, Google Fonts, GA4 y Clarity.
+- Cada página tiene una **Content-Security-Policy** en un `<meta http-equiv>` al principio del `<head>` (GitHub Pages no permite configurar cabeceras HTTP). Solo permite cargar scripts, estilos, fuentes, imágenes y conexiones del propio sitio y de Google Fonts, GA4 y Clarity.
   - **Si agregás un script, una fuente, un embed o un servicio externo nuevo, sumá su dominio a la CSP de las 4 páginas.** Si no, el navegador lo bloquea en silencio. Para verificarlo, abrí la consola del navegador: cada bloqueo aparece como error "Refused to … because it violates the following Content Security Policy directive".
-  - `script-src` y `style-src` permiten `'unsafe-inline'` porque el sitio usa scripts y estilos inline (config de Tailwind, GA4, Clarity, tracking, menú). Si algún día se compila Tailwind y se mueven los scripts a archivos `.js`, se puede quitar y la CSP queda más estricta.
+  - `script-src` y `style-src` permiten `'unsafe-inline'` porque el sitio usa scripts y estilos inline (GA4, Clarity, tracking, menú, animaciones y el `<style>` de cada página). Si se mueven a archivos `.js` y `.css`, se puede quitar y la CSP queda más estricta.
   - `form-action 'none'` y `frame-src 'none'`: el sitio no tiene formularios ni iframes. Si se agrega alguno, hay que habilitarlo en la CSP.
 - `<meta name="referrer" content="strict-origin-when-cross-origin">`: a los sitios externos solo les llega el dominio, nunca la ruta completa.
 - Todos los links con `target="_blank"` llevan `rel="noopener"`.
@@ -101,7 +107,7 @@ El PRD exige WCAG 2.1 AA. Las 3 páginas pasan axe-core sin violaciones; manten�
 
 ## Despliegue
 
-`.github/workflows/deploy.yml` publica en GitHub Pages en cada push a `main` (también se puede correr a mano desde Actions). Copia a `_site/` solo `*.html`, `assets/`, `robots.txt` y `sitemap.xml`: la documentación, `CLAUDE.md` y `.claude/` no se publican. Si agregás una carpeta que el sitio necesita (por ejemplo `css/`), sumala al paso "Preparar archivos del sitio".
+`.github/workflows/deploy.yml` publica en GitHub Pages en cada push a `main` (también se puede correr a mano desde Actions). Instala las dependencias con `npm ci` y compila el CSS de Tailwind. Después copia a `_site/` solo `*.html`, `assets/`, `robots.txt` y `sitemap.xml`: la documentación, `CLAUDE.md` y `.claude/` no se publican. Si agregás una carpeta que el sitio necesita (por ejemplo `css/`), sumala al paso "Preparar archivos del sitio".
 
 El repo es público (GitHub Pages gratis lo requiere): no subas datos internos como precios o valor hora. Están solo en el Lean PRD de Notion. Si necesitás tener un documento interno en la carpeta del proyecto, guardalo en `Documentacion/privado/` o con el nombre `*.privado.md`: el `.gitignore` los excluye.
 
