@@ -6,6 +6,17 @@ Las versiones son 0.x porque el sitio todavía no está publicado. La 1.0.0 qued
 
 ---
 
+## Versión 0.12.0
+
+**Fecha de actualización:** 7 de octubre de 2026
+
+- **Detalle de cada etapa en Servicios.** Cada card muestra su plazo junto al número de etapa: 72 hs hábiles para el diagnóstico, 2 semanas para la documentación básica y 4 semanas para la complementaria. También tiene un botón "Ver detalle" que abre un modal con una descripción más larga, qué incluye, el entregable, el plazo, un ejemplo concreto y un botón para agendar la reunión.
+  - **Por qué:** resuelve la solicitud "Servicios: cards estáticas sin detalle o interacción". La sugerencia vino del feedback de un usuario. Así el visitante entiende qué recibe en cada etapa y cuánto tarda, sin sobrecargar la página.
+  - El botón del modal lleva a la misma agenda de Notion Calendar, que sigue siendo el único canal de contacto. Registra el mismo evento de conversión (`clic_agendar_reunion`) con la etapa en `location`. Un evento nuevo, `clic_ver_detalle_etapa`, muestra qué etapa genera más interés.
+  - Se usó el `<dialog>` nativo del navegador: maneja el foco y el cierre con Escape sin librerías ni cambios en la CSP. axe-core da 0 violaciones con el modal abierto, en escritorio y en celular.
+- **El menú mobile se cierra con la tecla Escape**, y el foco vuelve al botón del menú.
+  - **Por qué:** es lo que espera quien navega con teclado. Surgió de la revisión visual del 7 de octubre.
+
 ## Versión 0.11.0
 
 **Fecha de actualización:** 6 de octubre de 2026
