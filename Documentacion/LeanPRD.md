@@ -9,9 +9,9 @@ Versión del 6 de octubre de 2026. Donde difiere de lo anterior en esta página,
 - **Objetivo:** que cualquier persona que llegue desde una red social entienda la oferta, y que la página la ayude a decidir agendar una reunión conmigo.
 - **Urgencia:** la fecha del 15 de octubre de 2026 es una meta propia, sin evento externo detrás. Está ligada a dar de baja la landing de Lovable y reconstruirla desde un repo propio con el contenido traído de Lovable. El repo ya está armado.
 - **Antecedentes:**
-    - Feedback cualitativo de 7 personas de mi entorno sobre la propuesta de valor (doc "Onboarding Sabri").
-    - 14 solicitudes cargadas entre el 9 y el 13 de agosto de 2026 en Solicitudes de funciones, sobre la versión de Lovable.
-    - Hallazgos del feedback: el mensaje no se entendió de primeras; hay que definir si apunto a startups formales o informales; las empresas chicas pueden temerle al presupuesto; piden más información sobre mí y mis proyectos; no está claro cómo consigo clientes; algunos creen que buscan un equipo completo de desarrollo y no a una sola persona.
+  - Feedback cualitativo de 7 personas de mi entorno sobre la propuesta de valor (doc "Onboarding Sabri").
+  - 14 solicitudes cargadas entre el 9 y el 13 de agosto de 2026 en Solicitudes de funciones, sobre la versión de Lovable.
+  - Hallazgos del feedback: el mensaje no se entendió de primeras; hay que definir si apunto a startups formales o informales; las empresas chicas pueden temerle al presupuesto; piden más información sobre mí y mis proyectos; no está claro cómo consigo clientes; algunos creen que buscan un equipo completo de desarrollo y no a una sola persona.
 
 ### Servicios
 
