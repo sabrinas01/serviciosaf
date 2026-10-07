@@ -104,11 +104,10 @@
     transform: translateY(0);
   }
   .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
   }
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
   }
 
   /* Technical accents */
@@ -229,24 +228,24 @@
 </script>
 </head>
 <body class="font-body-main text-body-main antialiased bg-background text-on-background selection:bg-secondary selection:text-background">
-<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded-[2px]">Saltar al contenido</a>
+<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded">Saltar al contenido</a>
 <!-- TopAppBar -->
 <header class="bg-surface/90 backdrop-blur-xs border-b border-outline-variant docked full-width top-0 sticky z-50">
-<div class="max-w-max-width mx-auto px-margin-page flex justify-between items-center h-[70px]">
+<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page flex justify-between items-center h-[70px]">
 <a class="font-section-h2 text-section-h2 font-black text-primary" href="index.html">Sabrina Sanso</a>
 <nav class="hidden md:flex gap-6 items-center">
 <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
 <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
 <a class="text-secondary font-ui-action text-ui-action" href="sobre-mi.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
 </nav>
-<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded-[2px] border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
-<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded-[2px] hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
+<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
+<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
 </div>
-<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page pb-6" aria-label="Menú principal">
+<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page-mobile md:px-margin-page pb-6" aria-label="Menú principal">
 <a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
 <a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
 <a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-secondary" href="sobre-mi.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
-<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded-[2px] border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
+<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
 </nav>
 <script>
   (() => {
@@ -269,10 +268,10 @@
 </header>
 <main id="contenido">
 <!-- Quién soy -->
-<section class="pt-section-v-lg pb-section-v-md px-margin-page bg-surface-container-low reveal active scroll-mt-[70px]" id="sobre-mi">
+<section class="pt-section-v-lg pb-section-v-md px-margin-page-mobile md:px-margin-page bg-surface-container-low reveal active scroll-mt-[70px]" id="sobre-mi">
 <div class="max-w-max-width mx-auto">
 <div class="grid md:grid-cols-[300px_1fr] gap-12 items-start">
-<div class="aspect-4/5 bg-surface border border-outline-variant rounded-[2px] flex flex-col items-center justify-center overflow-hidden relative tech-border">
+<div class="aspect-4/5 bg-surface border border-outline-variant rounded flex flex-col items-center justify-center overflow-hidden relative tech-border">
 <img src="assets/perfil-sabrina.png" alt="Sabrina Sanso, analista funcional técnica IT" class="w-full h-full object-cover" loading="lazy" width="400" height="500"/>
 </div>
 <div>
@@ -286,14 +285,14 @@
           </p>
 <p class="font-body-main text-body-main text-on-surface-variant max-w-2xl">Cuento con más de 4 años de experiencia como Analista Funcional trabajando bajo marcos de metodologías ágiles como Scrum y Kanban, acompañando a equipos desde el inicio del proyecto hasta su implementación y soporte post implementación.</p>
 <ul class="flex flex-wrap gap-3 mt-8" aria-label="Redes sociales y contacto">
-<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded-[2px] hover:text-secondary hover:border-secondary transition-colors" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" data-track="clic_rrss" data-track-params='{"red":"linkedin","location":"sobre_mi_bio"}'><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="sr-only"> (se abre en una nueva pestaña)</span></a></li>
-<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded-[2px] hover:text-secondary hover:border-secondary transition-colors" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" data-track="clic_rrss" data-track-params='{"red":"instagram","location":"sobre_mi_bio"}'><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram<span class="sr-only"> de Bitácora IT (se abre en una nueva pestaña)</span></a></li>
-<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded-[2px] hover:text-secondary hover:border-secondary transition-colors" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" data-track="clic_rrss" data-track-params='{"red":"github","location":"sobre_mi_bio"}'><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3z"/></svg>GitHub<span class="sr-only"> (se abre en una nueva pestaña)</span></a></li>
-<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded-[2px] hover:text-secondary hover:border-secondary transition-colors" href="mailto:sanso.s@outlook.com" data-track="clic_rrss" data-track-params='{"red":"email","location":"sobre_mi_bio"}'><span class="material-symbols-outlined text-base! leading-none!" aria-hidden="true">mail</span>Email</a></li>
+<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded hover:text-secondary hover:border-secondary transition-colors" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" data-track="clic_rrss" data-track-params='{"red":"linkedin","location":"sobre_mi_bio"}'><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn<span class="sr-only"> (se abre en una nueva pestaña)</span></a></li>
+<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded hover:text-secondary hover:border-secondary transition-colors" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" data-track="clic_rrss" data-track-params='{"red":"instagram","location":"sobre_mi_bio"}'><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram<span class="sr-only"> de Bitácora IT (se abre en una nueva pestaña)</span></a></li>
+<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded hover:text-secondary hover:border-secondary transition-colors" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" data-track="clic_rrss" data-track-params='{"red":"github","location":"sobre_mi_bio"}'><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3z"/></svg>GitHub<span class="sr-only"> (se abre en una nueva pestaña)</span></a></li>
+<li><a class="inline-flex items-center gap-2 font-ui-action text-ui-action text-primary border border-outline-variant px-4 py-2.5 rounded hover:text-secondary hover:border-secondary transition-colors" href="mailto:sanso.s@outlook.com" data-track="clic_rrss" data-track-params='{"red":"email","location":"sobre_mi_bio"}'><span class="material-symbols-outlined text-base! leading-none!" aria-hidden="true">mail</span>Email</a></li>
 </ul></div>
 </div>
 </div>
-</section><section class="py-section-v-md px-margin-page border-t border-outline-variant bg-surface-container-lowest scroll-mt-[70px]" id="timeline-section">
+</section><section class="py-section-v-md px-margin-page-mobile md:px-margin-page border-t border-outline-variant bg-surface-container-lowest scroll-mt-[70px]" id="timeline-section">
 <div class="max-w-max-width mx-auto">
 <h2 id="trayectoria-titulo" class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-8 block text-center">trayectoria profesional</h2>
 <div class="relative max-w-3xl mx-auto">
@@ -306,13 +305,13 @@
 <div class="hidden md:block text-right pr-8">
 <span class="font-mono-data text-mono-data text-secondary">2021 - 2022</span>
 </div>
-<div class="w-10 h-10 rounded-full bg-surface border-2 border-secondary flex items-center justify-center shrink-0 z-10 shadow-[0_0_10px_rgba(141,212,192,0.2)]">
+<div class="w-10 h-10 rounded-full bg-surface border-2 border-secondary flex items-center justify-center shrink-0 z-10">
 <div class="w-2 h-2 bg-secondary rounded-full"></div>
 </div>
 </div>
 <div class="md:w-1/2 pl-12 md:pl-8">
 <span class="md:hidden font-mono-data text-mono-data text-secondary block mb-1">2021 - 2022</span>
-<div class="bg-surface p-6 border border-outline-variant tech-border">
+<div class="bg-surface p-gutter border border-outline-variant tech-border">
 <h3 class="font-card-h3 text-card-h3 text-primary mb-2">Inicio: Scrum Master &amp; Analista Funcional</h3>
 <p class="font-body-small text-body-small text-on-surface-variant">Proyecto: Plataforma Educativa. Inicié como Scrum Master y terminé como Analista Funcional.</p>
 </div>
@@ -324,13 +323,13 @@
 <div class="hidden md:block text-left pl-8">
 <span class="font-mono-data text-mono-data text-secondary">2022 - 2023</span>
 </div>
-<div class="w-10 h-10 rounded-full bg-surface border-2 border-secondary flex items-center justify-center shrink-0 z-10 shadow-[0_0_10px_rgba(141,212,192,0.2)]">
+<div class="w-10 h-10 rounded-full bg-surface border-2 border-secondary flex items-center justify-center shrink-0 z-10">
 <div class="w-2 h-2 bg-secondary rounded-full"></div>
 </div>
 </div>
 <div class="md:w-1/2 pl-12 md:pr-8 md:pl-0 md:text-right">
 <span class="md:hidden font-mono-data text-mono-data text-secondary block mb-1">2022 - 2023</span>
-<div class="bg-surface p-6 border border-outline-variant tech-border">
+<div class="bg-surface p-gutter border border-outline-variant tech-border">
 <h3 class="font-card-h3 text-card-h3 text-primary mb-2">Producto Digital Turístico</h3>
 <p class="font-body-small text-body-small text-on-surface-variant">Acompañé toda la etapa inicial y parte del desarrollo de un producto digital para el sector turístico.</p>
 </div>
@@ -342,13 +341,13 @@
 <div class="hidden md:block text-right pr-8">
 <span class="font-mono-data text-mono-data text-secondary">2023 - 2025</span>
 </div>
-<div class="w-10 h-10 rounded-full bg-surface border-2 border-secondary flex items-center justify-center shrink-0 z-10 shadow-[0_0_10px_rgba(141,212,192,0.2)]">
+<div class="w-10 h-10 rounded-full bg-surface border-2 border-secondary flex items-center justify-center shrink-0 z-10">
 <div class="w-2 h-2 bg-secondary rounded-full"></div>
 </div>
 </div>
 <div class="md:w-1/2 pl-12 md:pl-8">
 <span class="md:hidden font-mono-data text-mono-data text-secondary block mb-1">2023 - 2025</span>
-<div class="bg-surface p-6 border border-outline-variant tech-border">
+<div class="bg-surface p-gutter border border-outline-variant tech-border">
 <h3 class="font-card-h3 text-card-h3 text-primary mb-2">Liderazgo Post-Implementación</h3>
 <p class="font-body-small text-body-small text-on-surface-variant">Lideré la etapa de post implementación, acompañando a los usuarios, recepcionando incidentes en producción, errores y mejoras.</p>
 </div>
@@ -360,17 +359,17 @@
 <div class="hidden md:block text-left pl-8">
 <span class="font-mono-data text-mono-data text-secondary">Hoy</span>
 </div>
-<div class="relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 z-10 shadow-[0_0_20px_rgba(141,212,192,0.5)]">
+<div class="relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 z-10">
 <span class="absolute inset-0 rounded-full bg-secondary/40 animate-ping [animation-iteration-count:3] motion-reduce:animate-none"></span>
 <span class="material-symbols-outlined text-on-secondary text-xl! relative" aria-hidden="true">rocket_launch</span>
 </div>
 </div>
 <div class="md:w-1/2 pl-12 md:pr-8 md:pl-0 md:text-right">
 <span class="md:hidden font-mono-data text-mono-data text-secondary block mb-1">Hoy</span>
-<div class="bg-primary-container p-6 border border-teal-accent tech-border shadow-[0_0_15px_rgba(54,126,109,0.25)]">
+<div class="bg-surface p-gutter border border-outline-variant border-t-2 border-t-secondary tech-border">
 <span class="inline-flex items-center gap-2 font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-3"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse [animation-iteration-count:2] motion-reduce:animate-none" aria-hidden="true"></span>Aceptando nuevos clientes</span>
-<h3 class="font-card-h3 text-card-h3 text-primary-fixed mb-2">Analista Funcional freelance</h3>
-<p class="font-body-small text-body-small text-primary-fixed/80 mb-4">Ayudo a startups con producto en producción a documentar cómo funciona por dentro, para que no dependa de una sola persona.</p>
+<h3 class="font-card-h3 text-card-h3 text-primary mb-2">Analista Funcional freelance</h3>
+<p class="font-body-small text-body-small text-on-surface-variant mb-4">Ayudo a startups con producto en producción a documentar cómo funciona por dentro, para que no dependa de una sola persona.</p>
 <a class="inline-flex font-ui-action text-ui-action text-secondary hover:text-secondary-fixed transition-colors" href="index.html#contacto" data-track="clic_timeline_charlemos" data-track-params='{"location":"timeline_hoy"}'>Charlemos <span aria-hidden="true">→</span></a>
 </div>
 </div>
@@ -382,7 +381,7 @@
 </main>
 <!-- Footer -->
 <footer class="bg-surface-container-highest border-t border-outline-variant full-width">
-<div class="max-w-max-width mx-auto px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
+<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
 <div class="font-section-h2 text-section-h2 font-black text-primary text-center md:text-left">
         Sabrina Sanso
         <span class="block font-body-small text-body-small text-on-surface-variant mt-2 font-normal"><span style="letter-spacing: -0.32px;">© 2026 Sabrina Sanso. Todos los derechos reservados</span></span>

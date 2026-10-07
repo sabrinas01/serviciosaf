@@ -61,15 +61,19 @@
   --color-on-secondary-container: #85cdb9;
   --color-teal-accent: #367e6d;
 
-  --radius: 0.125rem;
-  --radius-lg: 0.25rem;
-  --radius-xl: 0.5rem;
-  --radius-full: 0.75rem;
+  /* Radios de Technical Artisan: 4px (rounded) en botones, inputs y cards. */
+  --radius: 0.25rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 
   --spacing-max-width: 1080px;
   --spacing-base: 4px;
   --spacing-unit: 7px;
   --spacing-section-v-md: 70px;
+  /* Margen lateral: 20px en mobile (< 768px) y 28px desde md. */
+  --spacing-margin-page-mobile: 20px;
   --spacing-margin-page: 28px;
   --spacing-gutter: 28px;
   --spacing-section-v-lg: 84px;

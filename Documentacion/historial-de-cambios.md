@@ -6,6 +6,21 @@ Las versiones son 0.x porque el sitio todavía no está publicado. La 1.0.0 qued
 
 ---
 
+## Versión 0.13.0
+
+**Fecha de actualización:** 7 de octubre de 2026
+
+- **El sitio sigue al pie el design system "Technical Artisan"**, del proyecto "Landing page servicios af" en Google Stitch. Los colores, las tipografías y los espaciados ya eran los de ese sistema. Se ajustaron los detalles en los que el sitio se apartaba:
+  - **Radio de 4px** en botones, inputs y cards (antes 2px). Los puntos de la trayectoria ahora son círculos.
+  - **Sin sombras:** se quitaron los brillos verdes y la sombra de las cards al pasar el mouse. La profundidad se marca solo con capas de color y bordes.
+  - **Margen lateral de 20px en celular** (antes 28px en todas las pantallas).
+  - **Padding de 28px en las cards.**
+  - **"Technical Strike":** la etapa 02 de Servicios y la card "Hoy" de la trayectoria se destacan con un borde superior de 2px en acento, en lugar de un fondo verde.
+  - **Listas** con 14px entre ítems.
+  - **Chips** de "Solo la etapa 01 · 01 + 02 · Las tres etapas" en mono y mayúscula, con fondo tenue.
+  - **Por qué:** que el sitio respete el design system de la marca de punta a punta. Antes se probó implementar el design system "bitacorait" (fondo claro gris arena, Fraunces en los títulos), pero se descartó porque a Sabri no le gustó cómo se veía.
+- **Se verificó:** axe-core da 0 violaciones en las 4 páginas, a 1280px y a 390px, sin scroll horizontal.
+
 ## Versión 0.12.0
 
 **Fecha de actualización:** 7 de octubre de 2026

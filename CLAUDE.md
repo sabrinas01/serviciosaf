@@ -57,12 +57,22 @@ La navegación de escritorio es `hidden md:flex`. En mobile hay un botón hambur
 
 ## Tokens de diseño
 
-El `@theme` de `src/tailwind.css` define una paleta oscura estilo Material 3 (clase `dark` en `<html>`): `primary`, `secondary` (#8dd4c0, el color de acento), `surface-*`, `on-surface*`, `outline-variant`, `teal-accent`, entre otros. También define pares tipográficos semánticos que se usan juntos, por ejemplo `font-display-h1 text-display-h1`, `font-section-h2 text-section-h2`, `font-mono-eyebrow text-mono-eyebrow`, `font-body-main text-body-main`, `font-body-small`, `font-ui-action`, `font-mono-data` y `font-card-h3`. Los tokens de espaciado incluyen `max-w-max-width` (1080px), `px-margin-page`, `py-section-v-md`/`-lg` y `gap-grid-gap`. Usá estos tokens en lugar de valores arbitrarios.
+El sitio sigue el design system **"Technical Artisan"**, del proyecto "Landing page servicios af" en Google Stitch. Sus reglas, además de los tokens:
+
+- **Sin sombras.** La profundidad se marca con capas de color (`surface-*`) y bordes de 1px en `outline-variant`.
+- **Radio de 4px** (`rounded`) en botones, inputs y cards. Los círculos usan `rounded-full`.
+- **Cards** con padding `p-gutter` (28px).
+- **"Technical Strike":** para destacar una card (la etapa 02 de Servicios, la card "Hoy" de la trayectoria), se le pone un borde superior de 2px en acento (`border-t-2 border-t-secondary`). No se usa un fondo de otro color.
+- **Margen lateral** de 20px en mobile y 28px desde `md`: `px-margin-page-mobile md:px-margin-page`.
+- **Listas** con 14px entre ítems (`space-y-3.5`) y viñeta en `secondary`.
+- **Chips:** en mono y mayúscula, con fondo tenue (`bg-primary/10` o `bg-secondary/15`).
+
+El `@theme` de `src/tailwind.css` define una paleta oscura estilo Material 3 (clase `dark` en `<html>`): `primary`, `secondary` (#8dd4c0, el color de acento), `surface-*`, `on-surface*`, `outline-variant`, `teal-accent`, entre otros. También define pares tipográficos semánticos que se usan juntos, por ejemplo `font-display-h1 text-display-h1`, `font-section-h2 text-section-h2`, `font-mono-eyebrow text-mono-eyebrow`, `font-body-main text-body-main`, `font-body-small`, `font-ui-action`, `font-mono-data` y `font-card-h3`. Los tokens de espaciado incluyen `max-w-max-width` (1080px), `px-margin-page-mobile`/`px-margin-page`, `p-gutter`, `py-section-v-md`/`-lg` y `gap-grid-gap`. Usá estos tokens en lugar de valores arbitrarios.
 
 Clases CSS propias:
 
 - `.reveal`: aparece con un fade y desplazamiento, y recibe `.active` desde un IntersectionObserver. La mayoría de las secciones ya vienen con `reveal active`.
-- `.hover-lift`
+- `.hover-lift`: sube la card 4px al pasar el mouse, sin sombra.
 - `.tech-border`: esquinas en forma de corchete en `#8dd4c0`.
 
 ## Accesibilidad

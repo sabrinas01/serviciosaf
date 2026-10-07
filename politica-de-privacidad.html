@@ -53,11 +53,10 @@
     transform: translateY(0);
   }
   .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
   }
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
   }
 
   /* Technical accents */
@@ -130,24 +129,24 @@
 </script>
 </head>
 <body class="font-body-main text-body-main antialiased bg-background text-on-background selection:bg-secondary selection:text-background">
-<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded-[2px]">Saltar al contenido</a>
+<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded">Saltar al contenido</a>
 <!-- TopAppBar -->
 <header class="bg-surface/90 backdrop-blur-xs border-b border-outline-variant docked full-width top-0 sticky z-50">
-<div class="max-w-max-width mx-auto px-margin-page flex justify-between items-center h-[70px]">
+<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page flex justify-between items-center h-[70px]">
 <a class="font-section-h2 text-section-h2 font-black text-primary" href="index.html">Sabrina Sanso</a>
 <nav class="hidden md:flex gap-6 items-center">
 <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
 <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
 <a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
 </nav>
-<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded-[2px] border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
-<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded-[2px] hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
+<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
+<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
 </div>
-<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page pb-6" aria-label="Menú principal">
+<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page-mobile md:px-margin-page pb-6" aria-label="Menú principal">
 <a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
 <a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
 <a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
-<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded-[2px] border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
+<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
 </nav>
 <script>
   (() => {
@@ -170,12 +169,12 @@
 </header>
 <main id="contenido">
 <!-- Política de privacidad -->
-<section class="pt-section-v-lg pb-section-v-lg px-margin-page bg-surface-container-low" id="privacidad">
+<section class="pt-section-v-lg pb-section-v-lg px-margin-page-mobile md:px-margin-page bg-surface-container-low" id="privacidad">
 <div class="max-w-3xl mx-auto">
 <span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-4 block">legal</span>
 <h1 class="font-section-h2 text-section-h2 text-primary mb-4">Política de privacidad</h1>
 <p class="font-mono-data text-mono-data text-on-surface-variant mb-10">Última actualización: 6 de octubre de 2026</p>
-<div class="space-y-10 font-body-small text-body-small text-on-surface-variant [&_h2]:font-card-h3 [&_h2]:text-card-h3 [&_h2]:text-primary [&_h2]:mb-3 [&_p]:mb-3 [&_ul]:space-y-2 [&_ul]:mb-3 [&_li]:relative [&_li]:pl-6 [&_li]:before:content-['>'] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:text-secondary [&_a]:text-secondary [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-secondary-fixed [&_strong]:text-on-surface">
+<div class="space-y-10 font-body-small text-body-small text-on-surface-variant [&_h2]:font-card-h3 [&_h2]:text-card-h3 [&_h2]:text-primary [&_h2]:mb-3 [&_p]:mb-3 [&_ul]:space-y-3.5 [&_ul]:mb-3 [&_li]:relative [&_li]:pl-6 [&_li]:before:content-['>'] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:text-secondary [&_a]:text-secondary [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-secondary-fixed [&_strong]:text-on-surface">
 <div>
 <h2>Quién es responsable</h2>
 <p>Este sitio es de <strong>Sabrina Sanso</strong> (Bitácora IT), analista funcional con domicilio en San Juan, Argentina. Para cualquier consulta sobre tus datos podés escribirme a <a href="mailto:sanso.s@outlook.com">sanso.s@outlook.com</a>.</p>
@@ -228,7 +227,7 @@
 </main>
 <!-- Footer -->
 <footer class="bg-surface-container-highest border-t border-outline-variant full-width">
-<div class="max-w-max-width mx-auto px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
+<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
 <div class="font-section-h2 text-section-h2 font-black text-primary text-center md:text-left">
         Sabrina Sanso
         <span class="block font-body-small text-body-small text-on-surface-variant mt-2 font-normal"><span style="letter-spacing: -0.32px;">© 2026 Sabrina Sanso. Todos los derechos reservados</span></span>
