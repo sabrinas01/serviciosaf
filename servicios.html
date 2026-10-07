@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html class="scroll-smooth dark" lang="es">
+<html class="scroll-smooth" lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- Seguridad: dominios permitidos (ver CLAUDE.md > Seguridad antes de agregar un script o servicio externo) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="color-scheme" content="light dark"/>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJFKG629HC"></script>
 <script>
@@ -86,14 +87,12 @@
 }
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&amp;family=Jetbrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="assets/fonts/Fraunces-Soft50.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
 <link href="assets/css/tailwind.css" rel="stylesheet"/>
+<script src="assets/js/animaciones.js"></script>
 <style>
-  body {
-    background-color: #131313;
-    color: #e4e2e1;
-  }
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -110,35 +109,7 @@
     transform: translateY(-4px);
   }
 
-  /* Technical accents */
-  .tech-border {
-    position: relative;
-  }
-  .tech-border::before, .tech-border::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: #8dd4c0;
-    border-style: solid;
-    pointer-events: none;
-  }
-  .tech-border::before {
-    top: -1px;
-    left: -1px;
-    border-width: 2px 0 0 2px;
-  }
-  .tech-border::after {
-    bottom: -1px;
-    right: -1px;
-    border-width: 0 2px 2px 0;
-  }
-
-  /* Accesibilidad */
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid #8dd4c0;
-    outline-offset: 3px;
-  }
+  /* Accesibilidad (el anillo de foco está en src/tailwind.css) */
   @media (prefers-reduced-motion: reduce) {
     .reveal, .hover-lift, .hover-lift:hover {
       transition: none;
@@ -179,25 +150,25 @@
   });
 </script>
 </head>
-<body class="font-body-main text-body-main antialiased bg-background text-on-background selection:bg-secondary selection:text-background">
-<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded">Saltar al contenido</a>
-<!-- TopAppBar -->
-<header class="bg-surface/90 backdrop-blur-xs border-b border-outline-variant docked full-width top-0 sticky z-50">
-<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page flex justify-between items-center h-[70px]">
-<a class="font-section-h2 text-section-h2 font-black text-primary" href="index.html">Sabrina Sanso</a>
+<body class="text-body bg-fondo text-texto selection:bg-acento selection:text-on-acento">
+<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bit-btn bit-btn-primario bit-btn-md">Saltar al contenido</a>
+<!-- Header -->
+<header class="bg-fondo/90 backdrop-blur-xs border-b border-borde top-0 sticky z-50">
+<div class="max-w-max-width mx-auto px-space-3 md:px-space-4 flex justify-between items-center h-[70px]">
+<a class="text-xl font-bold text-titulo" href="index.html">Sabrina Sanso</a>
 <nav class="hidden md:flex gap-6 items-center">
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
-<a class="text-secondary font-ui-action text-ui-action" href="servicios.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
+<a class="text-ui text-titulo underline decoration-acento decoration-2 underline-offset-8" href="servicios.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
 </nav>
-<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
-<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
+<a class="hidden md:inline-flex bit-btn bit-btn-primario bit-btn-md" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
+<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-titulo border border-borde rounded-md hover:bg-fondo-elevado transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
 </div>
-<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page-mobile md:px-margin-page pb-6" aria-label="Menú principal">
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-secondary" href="servicios.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
-<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
+<nav id="menu-mobile" class="md:hidden hidden border-t border-borde bg-fondo px-space-3 pb-6" aria-label="Menú principal">
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
+<a class="block py-3 border-b border-borde/40 text-ui text-titulo underline decoration-acento decoration-2 underline-offset-4" href="servicios.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
+<a class="mt-5 flex bit-btn bit-btn-primario bit-btn-md" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
 </nav>
 <script>
   (() => {
@@ -220,152 +191,176 @@
 </header>
 <main id="contenido">
 <!-- Servicios: 3 etapas modulares -->
-<section class="pt-section-v-lg pb-section-v-md px-margin-page-mobile md:px-margin-page reveal active bg-surface-container scroll-mt-[70px]" id="servicios">
-<div class="max-w-max-width mx-auto">
-<div class="max-w-3xl mb-12">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-4 block">servicios</span>
-<h1 class="font-section-h2 text-section-h2 text-primary mb-6">De "no sé cómo funciona esto" a documentación que se puede consultar</h1>
-<p class="font-body-main text-body-main text-on-surface-variant">Trabajo en tres etapas. Cada una cierra con un entregable concreto y no arrancás la siguiente si la anterior no te sirvió.</p>
-</div>
-<div class="flex flex-wrap items-center gap-3 mb-10">
-<span class="font-body-small text-body-small text-on-surface-variant mr-1">Se contratan por separado o juntas:</span>
-<span class="font-mono-eyebrow text-mono-eyebrow uppercase text-primary bg-primary/10 px-3 py-2 rounded">Solo la etapa 01</span>
-<span class="font-mono-eyebrow text-mono-eyebrow uppercase text-primary bg-primary/10 px-3 py-2 rounded">01 + 02</span>
-<span class="font-mono-eyebrow text-mono-eyebrow uppercase text-secondary bg-secondary/15 px-3 py-2 rounded">Las tres etapas</span></div>
-<div class="grid md:grid-cols-3 gap-6">
-<!-- Etapa 1 -->
-<div class="bg-surface border border-outline-variant rounded p-gutter flex flex-col hover-lift tech-border">
-<div class="flex items-center justify-between gap-3 mb-3"><span class="font-mono-eyebrow text-mono-eyebrow text-secondary">ETAPA 01</span><span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant">72 HS HÁBILES</span></div>
-<h2 class="font-card-h3 text-card-h3 text-primary mb-3">Diagnóstico funcional</h2>
-<p class="font-body-small text-body-small text-on-surface mb-5">Relevo cómo funciona el producto hoy: qué ve el usuario, qué reglas hay detrás y qué dependencias existen. Marco los puntos críticos.</p>
-<ul class="space-y-3.5 mb-6">
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Relevamiento del funcionamiento actual</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Identificación de puntos críticos</li>
-</ul>
-<div class="mt-auto pt-5 border-t border-outline-variant">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase block mb-2">Entregable</span>
-<p class="font-body-small text-body-small text-on-surface">Informe de diagnóstico inicial</p>
-<button type="button" class="mt-5 inline-flex items-center gap-2 font-ui-action text-ui-action text-secondary hover:text-secondary-fixed transition-colors" aria-haspopup="dialog" data-modal-open="modal-etapa-01" data-track="clic_ver_detalle_etapa" data-track-params='{"etapa":"01"}'>Ver detalle <span aria-hidden="true">→</span></button>
-</div>
-</div>
-<!-- Etapa 2 -->
-<div class="bg-surface border border-outline-variant border-t-2 border-t-secondary rounded p-gutter flex flex-col hover-lift tech-border">
-<div class="flex items-center justify-between gap-3 mb-3"><span class="font-mono-eyebrow text-mono-eyebrow text-secondary">ETAPA 02</span><span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant">2 SEMANAS</span></div>
-<h2 class="font-card-h3 text-card-h3 text-primary mb-3">Documentación básica</h2>
-<p class="font-body-small text-body-small text-on-surface mb-5">Documento funcionalidades, reglas de negocio y flujos principales, en un formato que el equipo entiende sin preguntarme.</p>
-<ul class="space-y-3.5 mb-6">
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Historias de usuario + criterios de aceptación</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Flujos principales</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Diagramas de casos de uso</li>
-</ul>
-<div class="mt-auto pt-5 border-t border-outline-variant">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase block mb-2">Entregable</span>
-<p class="font-body-small text-body-small text-on-surface">Base de documentación funcional que el equipo consulta y actualiza</p>
-<button type="button" class="mt-5 inline-flex items-center gap-2 font-ui-action text-ui-action text-secondary hover:text-secondary-fixed transition-colors" aria-haspopup="dialog" data-modal-open="modal-etapa-02" data-track="clic_ver_detalle_etapa" data-track-params='{"etapa":"02"}'>Ver detalle <span aria-hidden="true">→</span></button>
-</div>
-</div>
-<!-- Etapa 3 -->
-<div class="bg-surface border border-outline-variant rounded p-gutter flex flex-col hover-lift tech-border">
-<div class="flex items-center justify-between gap-3 mb-3"><span class="font-mono-eyebrow text-mono-eyebrow text-secondary">ETAPA 03</span><span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant">4 SEMANAS</span></div>
-<h2 class="font-card-h3 text-card-h3 text-primary mb-3">Documentación complementaria</h2>
-<p class="font-body-small text-body-small text-on-surface mb-5">Completo la documentación y dejo anotadas las inconsistencias y la deuda técnica que hoy nadie tiene registradas.</p>
-<ul class="space-y-3.5 mb-6">
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Manual de usuario</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Listado de deuda técnica y bloqueos</li>
-</ul>
-<div class="mt-auto pt-5 border-t border-outline-variant">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase block mb-2">Entregable</span>
-<p class="font-body-small text-body-small text-on-surface">Documentación general del producto</p>
-<button type="button" class="mt-5 inline-flex items-center gap-2 font-ui-action text-ui-action text-secondary hover:text-secondary-fixed transition-colors" aria-haspopup="dialog" data-modal-open="modal-etapa-03" data-track="clic_ver_detalle_etapa" data-track-params='{"etapa":"03"}'>Ver detalle <span aria-hidden="true">→</span></button>
-</div>
-</div>
+<section class="pt-section-v pb-space-4 px-space-3 md:px-space-4 bit-bg-puntos reveal active scroll-mt-[70px]" id="servicios">
+<div class="max-w-max-width mx-auto grid gap-space-3">
+<header class="grid gap-space-2 max-w-[640px]" data-anim-grupo>
+<p class="bit-eyebrow">servicios</p>
+<h1 class="text-h1 text-titulo">De "no sé cómo funciona esto" a documentación que se puede consultar</h1>
+<p class="text-body text-texto-suave">Trabajo en tres etapas. Cada una cierra con un entregable concreto y no arrancás la siguiente si la anterior no te sirvió.</p>
+</header>
+<div class="flex flex-wrap items-center gap-space-1" data-anim-grupo>
+<span class="text-body text-texto-suave mr-1">Se contratan por separado o juntas:</span>
+<span class="bit-tag">Solo la etapa 01</span>
+<span class="bit-tag">01 + 02</span>
+<span class="bit-tag bit-tag-acento">Las tres etapas</span>
 </div>
 </div>
 </section>
+<section class="pt-space-4 pb-section-v px-space-3 md:px-space-4 reveal active" aria-label="Etapas">
+<div class="max-w-max-width mx-auto grid md:grid-cols-3 gap-space-3" data-anim-grupo>
+<!-- Etapa 01 -->
+<article class="bit-card flex flex-col hover-lift hover:border-acento">
+<div class="flex flex-wrap items-center justify-between gap-space-1"><p class="bit-eyebrow"><span class="bit-num">01</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>etapa</p><span class="bit-tag">72 hs hábiles</span></div>
+<h2 class="font-fraunces text-h2 text-titulo">Diagnóstico funcional</h2>
+<p class="text-body text-texto">Relevo cómo funciona el producto hoy: qué ve el usuario, qué reglas hay detrás y qué dependencias existen. Marco los puntos críticos.</p>
+<div class="grid gap-space-1">
+<p class="bit-check-title">Qué incluye</p>
+<ul class="bit-check-list" data-anim="check">
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Relevamiento del funcionamiento actual</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Identificación de puntos críticos</span></li>
+</ul>
+</div>
+<div class="mt-auto pt-space-2 border-t border-borde grid gap-space-1">
+<p class="bit-check-title">Entregable</p>
+<p class="text-body text-texto">Informe de diagnóstico inicial</p>
+</div>
+<button type="button" class="bit-btn bit-btn-secundario bit-btn-md self-start" aria-haspopup="dialog" data-modal-open="modal-etapa-01" data-track="clic_ver_detalle_etapa" data-track-params='{"etapa":"01"}'>Ver detalle <span class="flecha" aria-hidden="true">→</span></button>
+</article>
+<!-- Etapa 02 -->
+<article class="bit-card flex flex-col hover-lift hover:border-acento">
+<div class="flex flex-wrap items-center justify-between gap-space-1"><p class="bit-eyebrow"><span class="bit-num">02</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>etapa</p><span class="bit-tag">2 semanas</span></div>
+<h2 class="font-fraunces text-h2 text-titulo">Documentación básica</h2>
+<p class="text-body text-texto">Documento funcionalidades, reglas de negocio y flujos principales, en un formato que el equipo entiende sin preguntarme.</p>
+<div class="grid gap-space-1">
+<p class="bit-check-title">Qué incluye</p>
+<ul class="bit-check-list" data-anim="check">
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Historias de usuario + criterios de aceptación</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Flujos principales</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Diagramas de casos de uso</span></li>
+</ul>
+</div>
+<div class="mt-auto pt-space-2 border-t border-borde grid gap-space-1">
+<p class="bit-check-title">Entregable</p>
+<p class="text-body text-texto">Base de documentación funcional que el equipo consulta y actualiza</p>
+</div>
+<button type="button" class="bit-btn bit-btn-secundario bit-btn-md self-start" aria-haspopup="dialog" data-modal-open="modal-etapa-02" data-track="clic_ver_detalle_etapa" data-track-params='{"etapa":"02"}'>Ver detalle <span class="flecha" aria-hidden="true">→</span></button>
+</article>
+<!-- Etapa 03 -->
+<article class="bit-card flex flex-col hover-lift hover:border-acento">
+<div class="flex flex-wrap items-center justify-between gap-space-1"><p class="bit-eyebrow"><span class="bit-num">03</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>etapa</p><span class="bit-tag">4 semanas</span></div>
+<h2 class="font-fraunces text-h2 text-titulo">Documentación complementaria</h2>
+<p class="text-body text-texto">Completo la documentación y dejo anotadas las inconsistencias y la deuda técnica que hoy nadie tiene registradas.</p>
+<div class="grid gap-space-1">
+<p class="bit-check-title">Qué incluye</p>
+<ul class="bit-check-list" data-anim="check">
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Manual de usuario</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Listado de deuda técnica y bloqueos</span></li>
+</ul>
+</div>
+<div class="mt-auto pt-space-2 border-t border-borde grid gap-space-1">
+<p class="bit-check-title">Entregable</p>
+<p class="text-body text-texto">Documentación general del producto</p>
+</div>
+<button type="button" class="bit-btn bit-btn-secundario bit-btn-md self-start" aria-haspopup="dialog" data-modal-open="modal-etapa-03" data-track="clic_ver_detalle_etapa" data-track-params='{"etapa":"03"}'>Ver detalle <span class="flecha" aria-hidden="true">→</span></button>
+</article>
+</div>
+</section>
 <!-- Detalle de cada etapa (modales) -->
-<dialog id="modal-etapa-01" class="m-auto w-[calc(100%-32px)] max-w-[640px] max-h-[85vh] p-0 bg-surface-container-high text-on-surface border border-teal-accent rounded backdrop:bg-black/70" aria-labelledby="modal-etapa-01-titulo">
-<div class="relative p-8 md:p-10">
-<button type="button" class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 text-on-surface-variant border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-label="Cerrar detalle" data-modal-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
-<div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3 pr-12"><span class="font-mono-eyebrow text-mono-eyebrow text-secondary">ETAPA 01</span><span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant">72 HS HÁBILES</span></div>
-<h2 id="modal-etapa-01-titulo" class="font-section-h2 text-section-h2 text-primary mb-5 pr-12">Diagnóstico funcional</h2>
-<p class="font-body-main text-body-main text-on-surface mb-8">Entro al producto como si fuera alguien nuevo del equipo: lo uso, reviso lo que haya escrito y charlo con quienes lo conocen. En 72 horas hábiles te cuento cómo funciona hoy, dónde están los riesgos y qué conviene documentar primero.</p>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-3">Qué incluye</h3>
-<ul class="space-y-3.5 mb-8">
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Relevamiento del funcionamiento actual</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Identificación de puntos críticos</li>
+<dialog id="modal-etapa-01" class="m-auto w-[calc(100%-32px)] max-w-[640px] max-h-[85vh] p-0 bg-fondo-elevado text-texto border border-borde rounded-lg backdrop:bg-black/60" aria-labelledby="modal-etapa-01-titulo">
+<div class="relative grid gap-space-3 p-space-3 md:p-space-4">
+<button type="button" class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 text-titulo border border-borde rounded-md hover:bg-fondo transition-colors" aria-label="Cerrar detalle" data-modal-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+<header class="grid gap-space-1 pr-12">
+<div class="flex flex-wrap items-center gap-space-1"><p class="bit-eyebrow"><span class="bit-num">01</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>etapa</p><span class="bit-tag">72 hs hábiles</span></div>
+<h2 id="modal-etapa-01-titulo" class="font-fraunces text-h2 text-titulo">Diagnóstico funcional</h2>
+</header>
+<p class="text-body text-texto">Entro al producto como si fuera alguien nuevo del equipo: lo uso, reviso lo que haya escrito y charlo con quienes lo conocen. En 72 horas hábiles te cuento cómo funciona hoy, dónde están los riesgos y qué conviene documentar primero.</p>
+<div class="grid gap-space-1">
+<h3 class="bit-check-title">Qué incluye</h3>
+<ul class="bit-check-list" data-anim="check">
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Relevamiento del funcionamiento actual</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Identificación de puntos críticos</span></li>
 </ul>
-<div class="grid sm:grid-cols-2 gap-6 mb-8">
-<div>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Entregable</h3>
-<p class="font-body-small text-body-small text-on-surface">Informe de diagnóstico inicial</p>
 </div>
-<div>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Plazo</h3>
-<p class="font-body-small text-body-small text-on-surface">72 horas hábiles</p>
+<div class="grid sm:grid-cols-2 gap-space-3">
+<div class="grid gap-space-1 content-start">
+<h3 class="bit-check-title">Entregable</h3>
+<p class="text-body text-texto">Informe de diagnóstico inicial</p>
+</div>
+<div class="grid gap-space-1 content-start">
+<h3 class="bit-check-title">Plazo</h3>
+<p class="text-body text-texto">72 horas hábiles</p>
 </div>
 </div>
-<div class="border-l-2 border-teal-accent pl-5 mb-10">
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Por ejemplo</h3>
-<p class="font-body-small text-body-small text-on-surface-variant">Un flujo de pagos que solo entiende una persona, o una regla de negocio que vive en el código y en ningún otro lado.</p>
+<div class="grid gap-space-1">
+<h3 class="bit-check-title">Por ejemplo</h3>
+<p class="text-body text-texto-suave">Un flujo de pagos que solo entiende una persona, o una regla de negocio que vive en el código y en ningún otro lado.</p>
 </div>
-<a class="inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-ui-action text-ui-action px-8 py-4 rounded hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all text-center w-full sm:w-auto" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"modal_etapa_01"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>AGENDAR REUNIÓN</a>
+<a class="bit-btn bit-btn-cta bit-btn-lg justify-self-stretch sm:justify-self-start" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"modal_etapa_01"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>Agendar reunión</a>
 </div>
 </dialog>
-<dialog id="modal-etapa-02" class="m-auto w-[calc(100%-32px)] max-w-[640px] max-h-[85vh] p-0 bg-surface-container-high text-on-surface border border-teal-accent rounded backdrop:bg-black/70" aria-labelledby="modal-etapa-02-titulo">
-<div class="relative p-8 md:p-10">
-<button type="button" class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 text-on-surface-variant border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-label="Cerrar detalle" data-modal-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
-<div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3 pr-12"><span class="font-mono-eyebrow text-mono-eyebrow text-secondary">ETAPA 02</span><span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant">2 SEMANAS</span></div>
-<h2 id="modal-etapa-02-titulo" class="font-section-h2 text-section-h2 text-primary mb-5 pr-12">Documentación básica</h2>
-<p class="font-body-main text-body-main text-on-surface mb-8">Paso en limpio lo que surgió del diagnóstico: cada funcionalidad con sus historias de usuario, criterios de aceptación y flujos, en un formato que tu equipo puede actualizar sin depender de mí.</p>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-3">Qué incluye</h3>
-<ul class="space-y-3.5 mb-8">
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Historias de usuario + criterios de aceptación</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Flujos principales</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Diagramas de casos de uso</li>
+<dialog id="modal-etapa-02" class="m-auto w-[calc(100%-32px)] max-w-[640px] max-h-[85vh] p-0 bg-fondo-elevado text-texto border border-borde rounded-lg backdrop:bg-black/60" aria-labelledby="modal-etapa-02-titulo">
+<div class="relative grid gap-space-3 p-space-3 md:p-space-4">
+<button type="button" class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 text-titulo border border-borde rounded-md hover:bg-fondo transition-colors" aria-label="Cerrar detalle" data-modal-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+<header class="grid gap-space-1 pr-12">
+<div class="flex flex-wrap items-center gap-space-1"><p class="bit-eyebrow"><span class="bit-num">02</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>etapa</p><span class="bit-tag">2 semanas</span></div>
+<h2 id="modal-etapa-02-titulo" class="font-fraunces text-h2 text-titulo">Documentación básica</h2>
+</header>
+<p class="text-body text-texto">Paso en limpio lo que surgió del diagnóstico: cada funcionalidad con sus historias de usuario, criterios de aceptación y flujos, en un formato que tu equipo puede actualizar sin depender de mí.</p>
+<div class="grid gap-space-1">
+<h3 class="bit-check-title">Qué incluye</h3>
+<ul class="bit-check-list" data-anim="check">
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Historias de usuario + criterios de aceptación</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Flujos principales</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Diagramas de casos de uso</span></li>
 </ul>
-<div class="grid sm:grid-cols-2 gap-6 mb-8">
-<div>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Entregable</h3>
-<p class="font-body-small text-body-small text-on-surface">Base de documentación funcional que el equipo consulta y actualiza</p>
 </div>
-<div>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Plazo</h3>
-<p class="font-body-small text-body-small text-on-surface">2 semanas</p>
+<div class="grid sm:grid-cols-2 gap-space-3">
+<div class="grid gap-space-1 content-start">
+<h3 class="bit-check-title">Entregable</h3>
+<p class="text-body text-texto">Base de documentación funcional que el equipo consulta y actualiza</p>
+</div>
+<div class="grid gap-space-1 content-start">
+<h3 class="bit-check-title">Plazo</h3>
+<p class="text-body text-texto">2 semanas</p>
 </div>
 </div>
-<div class="border-l-2 border-teal-accent pl-5 mb-10">
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Por ejemplo</h3>
-<p class="font-body-small text-body-small text-on-surface-variant">Que alguien que entra al equipo entienda cómo funciona el alta de usuarios leyendo la documentación, sin pedirle a nadie que se lo explique.</p>
+<div class="grid gap-space-1">
+<h3 class="bit-check-title">Por ejemplo</h3>
+<p class="text-body text-texto-suave">Que alguien que entra al equipo entienda cómo funciona el alta de usuarios leyendo la documentación, sin pedirle a nadie que se lo explique.</p>
 </div>
-<a class="inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-ui-action text-ui-action px-8 py-4 rounded hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all text-center w-full sm:w-auto" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"modal_etapa_02"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>AGENDAR REUNIÓN</a>
+<a class="bit-btn bit-btn-cta bit-btn-lg justify-self-stretch sm:justify-self-start" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"modal_etapa_02"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>Agendar reunión</a>
 </div>
 </dialog>
-<dialog id="modal-etapa-03" class="m-auto w-[calc(100%-32px)] max-w-[640px] max-h-[85vh] p-0 bg-surface-container-high text-on-surface border border-teal-accent rounded backdrop:bg-black/70" aria-labelledby="modal-etapa-03-titulo">
-<div class="relative p-8 md:p-10">
-<button type="button" class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 text-on-surface-variant border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-label="Cerrar detalle" data-modal-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
-<div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3 pr-12"><span class="font-mono-eyebrow text-mono-eyebrow text-secondary">ETAPA 03</span><span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant">4 SEMANAS</span></div>
-<h2 id="modal-etapa-03-titulo" class="font-section-h2 text-section-h2 text-primary mb-5 pr-12">Documentación complementaria</h2>
-<p class="font-body-main text-body-main text-on-surface mb-8">Completo lo que falta para que la documentación cubra el producto entero: el manual de usuario y un registro priorizado de inconsistencias y deuda técnica, para que el equipo decida qué atacar primero.</p>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-3">Qué incluye</h3>
-<ul class="space-y-3.5 mb-8">
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Manual de usuario</li>
-<li class="font-body-small text-body-small text-on-surface-variant relative pl-6 before:content-['>'] before:absolute before:left-0 before:text-secondary before:font-mono-data">Listado de deuda técnica y bloqueos</li>
+<dialog id="modal-etapa-03" class="m-auto w-[calc(100%-32px)] max-w-[640px] max-h-[85vh] p-0 bg-fondo-elevado text-texto border border-borde rounded-lg backdrop:bg-black/60" aria-labelledby="modal-etapa-03-titulo">
+<div class="relative grid gap-space-3 p-space-3 md:p-space-4">
+<button type="button" class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 text-titulo border border-borde rounded-md hover:bg-fondo transition-colors" aria-label="Cerrar detalle" data-modal-close><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+<header class="grid gap-space-1 pr-12">
+<div class="flex flex-wrap items-center gap-space-1"><p class="bit-eyebrow"><span class="bit-num">03</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>etapa</p><span class="bit-tag">4 semanas</span></div>
+<h2 id="modal-etapa-03-titulo" class="font-fraunces text-h2 text-titulo">Documentación complementaria</h2>
+</header>
+<p class="text-body text-texto">Completo lo que falta para que la documentación cubra el producto entero: el manual de usuario y un registro priorizado de inconsistencias y deuda técnica, para que el equipo decida qué atacar primero.</p>
+<div class="grid gap-space-1">
+<h3 class="bit-check-title">Qué incluye</h3>
+<ul class="bit-check-list" data-anim="check">
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Manual de usuario</span></li>
+<li class="bit-check-item is-done"><span class="bit-check-box" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-body">Listado de deuda técnica y bloqueos</span></li>
 </ul>
-<div class="grid sm:grid-cols-2 gap-6 mb-8">
-<div>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Entregable</h3>
-<p class="font-body-small text-body-small text-on-surface">Documentación general del producto</p>
 </div>
-<div>
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Plazo</h3>
-<p class="font-body-small text-body-small text-on-surface">4 semanas</p>
+<div class="grid sm:grid-cols-2 gap-space-3">
+<div class="grid gap-space-1 content-start">
+<h3 class="bit-check-title">Entregable</h3>
+<p class="text-body text-texto">Documentación general del producto</p>
+</div>
+<div class="grid gap-space-1 content-start">
+<h3 class="bit-check-title">Plazo</h3>
+<p class="text-body text-texto">4 semanas</p>
 </div>
 </div>
-<div class="border-l-2 border-teal-accent pl-5 mb-10">
-<h3 class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase mb-2">Por ejemplo</h3>
-<p class="font-body-small text-body-small text-on-surface-variant">Una pantalla que muestra un dato distinto al que se guarda, o un proceso que soporte resuelve a mano todas las semanas.</p>
+<div class="grid gap-space-1">
+<h3 class="bit-check-title">Por ejemplo</h3>
+<p class="text-body text-texto-suave">Una pantalla que muestra un dato distinto al que se guarda, o un proceso que soporte resuelve a mano todas las semanas.</p>
 </div>
-<a class="inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-ui-action text-ui-action px-8 py-4 rounded hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all text-center w-full sm:w-auto" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"modal_etapa_03"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>AGENDAR REUNIÓN</a>
+<a class="bit-btn bit-btn-cta bit-btn-lg justify-self-stretch sm:justify-self-start" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"modal_etapa_03"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>Agendar reunión</a>
 </div>
 </dialog>
 <script>
@@ -384,38 +379,33 @@
   })();
 </script>
 <!-- CTA -->
-<section class="py-section-v-lg px-margin-page-mobile md:px-margin-page border-t border-outline-variant reveal active bg-surface scroll-mt-[70px]" id="contacto">
+<section class="py-section-v px-space-3 md:px-space-4 border-t border-borde reveal active scroll-mt-[70px]" id="contacto">
 <div class="max-w-max-width mx-auto">
-<div class="bg-primary-container border border-teal-accent rounded p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center relative tech-border overflow-hidden">
-<div class="absolute inset-0 opacity-10 bg-radial-[circle_at_bottom_right] from-secondary via-transparent to-transparent"></div>
-<div class="relative z-10">
-<h2 class="font-section-h2 text-section-h2 text-primary-fixed mb-4">¿Tu equipo necesita esto? Charlemos.</h2>
-<p class="font-body-small text-body-small text-primary-fixed/80">Agendá una reunión de 30 minutos, sin costo, y vemos juntos por dónde empezar.</p>
+<div class="bit-cta md:grid-cols-[1fr_auto] md:items-center md:gap-space-4" data-anim="aparecer">
+<div class="grid gap-space-2">
+<h2 class="font-fraunces text-h2 text-gris-arena">¿Tu equipo necesita esto? Charlemos.</h2>
+<p class="text-body text-gris-arena max-w-[560px]">Agendá una reunión de 30 minutos, sin costo, y vemos juntos por dónde empezar.</p>
 </div>
-<div class="flex justify-center md:justify-end relative z-10">
-<a class="inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-ui-action text-ui-action px-8 py-4 rounded hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all text-center w-full md:w-auto" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"cta_agenda_button"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>AGENDAR REUNIÓN</a>
-</div>
+<a class="bit-btn bit-btn-claro bit-btn-lg justify-self-stretch md:justify-self-end" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"cta_agenda_button"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>Agendar reunión</a>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-container-highest border-t border-outline-variant full-width">
-<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
-<div class="font-section-h2 text-section-h2 font-black text-primary text-center md:text-left">
-        Sabrina Sanso
-        <span class="block font-body-small text-body-small text-on-surface-variant mt-2 font-normal"><span style="letter-spacing: -0.32px;">© 2026 Sabrina Sanso. Todos los derechos reservados</span></span>
+<footer class="bg-fondo-elevado border-t border-borde">
+<div class="max-w-max-width mx-auto px-space-3 md:px-space-4 py-space-4 flex flex-col md:flex-row justify-between items-center gap-space-3">
+<div class="text-center md:text-left">
+<p class="text-xl font-bold text-titulo">Sabrina Sanso</p>
+<p class="text-small text-texto-suave mt-1">© 2026 Sabrina Sanso. Todos los derechos reservados</p>
 </div>
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 items-center">
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sabrina Sanso (se abre en una nueva pestaña)">LinkedIn</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bitácora IT (se abre en una nueva pestaña)">Instagram</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sabrina Sanso (se abre en una nueva pestaña)">GitHub</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="mailto:sanso.s@outlook.com" aria-label="Email: enviar correo electrónico a Sabrina Sanso">Email</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="politica-de-privacidad.html">Privacidad</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sabrina Sanso (se abre en una nueva pestaña)">LinkedIn</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bitácora IT (se abre en una nueva pestaña)">Instagram</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sabrina Sanso (se abre en una nueva pestaña)">GitHub</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="mailto:sanso.s@outlook.com" aria-label="Email: enviar correo electrónico a Sabrina Sanso">Email</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="politica-de-privacidad.html">Privacidad</a>
 </div>
-<div class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined text-sm! text-secondary" aria-hidden="true">location_on</span> San Juan, Argentina
-      </div>
+<p class="text-small text-texto-suave flex items-center gap-2"><span class="material-symbols-outlined text-sm! text-acento" aria-hidden="true">location_on</span> San Juan, Argentina</p>
 </div>
 </footer>
 </body>

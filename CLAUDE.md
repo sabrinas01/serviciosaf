@@ -20,7 +20,7 @@ El alcance y las decisiones de producto están en [Documentacion/LeanPRD.md](Doc
   - El CSS se compila **sin `--minify`**: el minificador convertía los colores con transparencia (por ejemplo `bg-surface/90`) a `hsla()` y los redondeaba. GitHub Pages ya los comprime al enviarlos.
   - No pongas dos utilidades que pisan la misma propiedad en el mismo elemento (por ejemplo `text-ui-action` y `text-base`): el CSS compilado decide cuál gana por el orden de las reglas, no por el orden de las clases en el HTML.
   - Dentro de `class`, escribí los caracteres tal cual y no como entidades HTML: `before:content-['>']`, nunca `content-['&gt;']`. El compilador lee el texto del archivo y no reconoce la entidad.
-- Las fuentes vienen de Google Fonts: Rubik (texto y títulos), JetBrains Mono (eyebrows, acciones de UI y datos) y Material Symbols Outlined (íconos).
+- Las fuentes son Rubik y Material Symbols Outlined (íconos), que vienen de Google Fonts, y Fraunces (los `h2`), que se sirve desde `assets/fonts/`.
 - Para verlo localmente: `npm install` (una sola vez), `npm run build:css`, y servir la carpeta con un servidor estático, por ejemplo `npx serve .`.
 
 ## Páginas
@@ -55,37 +55,77 @@ No hay includes ni parciales. Cada página tiene su propia copia completa de:
 
 La navegación de escritorio es `hidden md:flex`. En mobile hay un botón hamburguesa (`[data-menu-toggle]`) que abre `#menu-mobile`, un nav con los mismos links y el botón "Charlemos", más un script inline al final del `<header>` (abre y cierra con el botón, al tocar un link y con Escape, que devuelve el foco al botón). Si cambiás un link del nav, cambialo también en `#menu-mobile`.
 
-## Tokens de diseño
+## Design system
 
-El sitio sigue el design system **"Technical Artisan"**, del proyecto "Landing page servicios af" en Google Stitch. Sus reglas, además de los tokens:
+El sitio sigue el design system **bitacorait** (Manual de Marca v4.1): <https://claude.ai/artifact/8zRe5meUXCZdBrxcnYjuP2>. Sus tokens están en `src/tailwind.css`; si cambia algo en el design system, cambialo ahí. Los valores marcados PROPUESTA no están en el manual.
 
-- **Sin sombras.** La profundidad se marca con capas de color (`surface-*`) y bordes de 1px en `outline-variant`.
-- **Radio de 4px** (`rounded`) en botones, inputs y cards. Los círculos usan `rounded-full`.
-- **Cards** con padding `p-gutter` (28px).
-- **"Technical Strike":** para destacar una card (la etapa 02 de Servicios, la card "Hoy" de la trayectoria), se le pone un borde superior de 2px en acento (`border-t-2 border-t-secondary`). No se usa un fondo de otro color.
-- **Margen lateral** de 20px en mobile y 28px desde `md`: `px-margin-page-mobile md:px-margin-page`.
-- **Listas** con 14px entre ítems (`space-y-3.5`) y viñeta en `secondary`.
-- **Chips:** en mono y mayúscula, con fondo tenue (`bg-primary/10` o `bg-secondary/15`).
+- **Temas:**
+  - Hay dos: claro (el del manual, fondo gris arena) y oscuro (PROPUESTA, fondo gris carbón). Se elige solo según el `prefers-color-scheme` del visitante; no hay botón ni clase `dark`.
+  - Los colores semánticos son variables CSS que cambian con el tema: `fondo`, `fondo-elevado`, `titulo`, `texto`, `texto-suave`, `acento`, `on-acento`, `primario`, `on-primario`, `borde`, `foco` y `grilla`. Usá siempre estos.
+  - Los colores de marca (`gris-arena`, `verde-oscuro`, `verde-azulado`, `gris-carbon`, `verde-claro`) van solo dentro de bloques que se ven igual en los dos temas: el CTA y la Terminal.
+- **Contraste:** en el tema claro, `acento` da 3,37:1 sobre `fondo`. No lo uses para texto chico: solo para títulos de 24px o más, íconos, bordes o fondo de botón.
+- **Tipografía:**
+  - Rubik para todo y **Fraunces** (500) para los `h2`, con `font-fraunces text-h2`. Sin tipografía monoespaciada.
+  - Estilos: `text-h1` (Rubik Bold 40px), `text-h2`, `text-body`, `text-small` y `text-ui` (botones y navegación).
+  - Fraunces se sirve desde `assets/fonts/`, con la licencia OFL en `Fraunces-OFL.txt`, y se precarga en el `<head>`.
+- **Espaciado:** grilla de 8px con `space-1` a `space-4` (8, 16, 24 y 40px), por ejemplo `gap-space-3` o `px-space-3 md:px-space-4`. El ancho de página es `max-w-max-width` (1040px) y las secciones llevan `py-section-v` (80px).
+- **Radios:** `rounded-sm` (4px) en etiquetas, `rounded-md` (8px) en botones y `rounded-lg` (16px) en tarjetas y bloques.
+- **Estilo "tech girl ordenada":** el toque tech sale de la estructura visible.
+  - Las secciones van numeradas (`01`, `02`) en el antetítulo.
+  - Las secciones alternan fondo de puntos (`bit-bg-puntos`) y fondo liso. Nunca va grilla detrás de una `bit-card`.
+  - Hay como máximo una Terminal por página.
+  - El texto va alineado a la izquierda.
 
-El `@theme` de `src/tailwind.css` define una paleta oscura estilo Material 3 (clase `dark` en `<html>`): `primary`, `secondary` (#8dd4c0, el color de acento), `surface-*`, `on-surface*`, `outline-variant`, `teal-accent`, entre otros. También define pares tipográficos semánticos que se usan juntos, por ejemplo `font-display-h1 text-display-h1`, `font-section-h2 text-section-h2`, `font-mono-eyebrow text-mono-eyebrow`, `font-body-main text-body-main`, `font-body-small`, `font-ui-action`, `font-mono-data` y `font-card-h3`. Los tokens de espaciado incluyen `max-w-max-width` (1080px), `px-margin-page-mobile`/`px-margin-page`, `p-gutter`, `py-section-v-md`/`-lg` y `gap-grid-gap`. Usá estos tokens en lugar de valores arbitrarios.
+Los componentes del design system son de React. Acá se escriben en HTML con las mismas clases, que están definidas en `@layer components` de `src/tailwind.css`:
 
-Clases CSS propias:
+| Componente | Clases |
+| --- | --- |
+| Button | `bit-btn` + `bit-btn-primario` / `-cta` / `-secundario` / `-claro` + `bit-btn-md` / `-lg`. Una sola acción `primario` o `cta` por bloque; `claro` solo dentro del CTA |
+| Tag | `bit-tag`, `bit-tag-acento` |
+| SectionHeader | `<p class="bit-eyebrow"><span class="bit-num">01</span><span class="bit-eyebrow-rule"></span>texto</p>` + título |
+| Card | `bit-card` |
+| CtaBlock | `bit-cta`: fondo `verde-oscuro` en los dos temas, con el foco en gris arena |
+| Section | `bit-bg-puntos` o `bit-bg-cuadricula` |
+| Checklist | `bit-check-title`, `bit-check-list`, `bit-check-item is-done`, `bit-check-box` |
+| Terminal | `bit-term`, `bit-term-bar`, `bit-term-dots`, `bit-term-body`, `bit-term-line` + `bit-term-mark` (`$`, `→`, `✓`) |
+
+## Animaciones
+
+`assets/js/animaciones.js` se carga en el `<head>` de las 4 páginas. Le agrega la clase `.en-vista` a cada elemento con `data-anim` cuando entra en pantalla. El CSS de las animaciones está al final de `src/tailwind.css`.
+
+- **Entrada:** `data-anim="subir"` (sube y aparece) o `data-anim="aparecer"` (aparece con una leve escala). En un contenedor con `data-anim-grupo`, sus hijos se animan en cascada.
+- **Raya del antetítulo:** la raya de `bit-eyebrow` crece cuando el antetítulo o su contenedor tiene `data-anim`.
+- **Dibujos:**
+  - `.subrayar` subraya en acento (el "¿Quién sabe qué se rompe?" del hero).
+  - `.tachar` tacha el texto (la frase del "Hoy" del puente técnico).
+  - Los dos se dibujan de izquierda a derecha.
+- **Terminal:** con `data-anim="terminal"`, las líneas se "tipean" una por una. El cursor (`bit-term-cursor`) parpadea 4 veces al final.
+- **Checklist:** con `data-anim="check"` (lo pone `checklist()` en las cards y en los modales), las casillas aparecen y se dibuja el tilde, en orden.
+- **Flecha del puente:** `.flecha-puente` hace fluir su línea punteada 4 veces.
+- **Hover:** los botones `bit-btn` se levantan 1px, la flecha `<span class="flecha">→</span>` avanza 3px y las tarjetas con `hover:border-acento` cambian el borde.
+
+Reglas que hay que mantener:
+
+- Todo el estado inicial oculto está dentro de `@media (prefers-reduced-motion: no-preference)` y depende de la clase `.js-anim`, que pone el script. Con "reducir movimiento" activado, o sin JavaScript, la página se ve quieta y completa.
+- Ninguna animación dura más de 5 segundos ni se repite sin fin (criterio 2.2.2).
+- Si agregás una sección, marcá sus bloques con `data-anim` o `data-anim-grupo` en lugar de escribir otra animación.
+
+Clases CSS propias del `<style>` de cada página:
 
 - `.reveal`: aparece con un fade y desplazamiento, y recibe `.active` desde un IntersectionObserver. La mayoría de las secciones ya vienen con `reveal active`.
-- `.hover-lift`: sube la card 4px al pasar el mouse, sin sombra.
-- `.tech-border`: esquinas en forma de corchete en `#8dd4c0`.
+- `.hover-lift`: sube la card 4px al pasar el mouse.
 
 ## Accesibilidad
 
-El PRD exige WCAG 2.1 AA. Las 3 páginas pasan axe-core sin violaciones; mantené estas convenciones:
+El PRD exige WCAG 2.1 AA. Las 4 páginas pasan axe-core sin violaciones, en los dos temas; mantené estas convenciones:
 
 - Cada página tiene un link "Saltar al contenido" (primer elemento del `<body>`) que apunta a `<main id="contenido">`, que envuelve todo lo que está entre el header y el footer.
 - Los íconos de Material Symbols son texto (`rocket_launch`, `calendar_month`), así que llevan `aria-hidden="true"`. Si un ícono es el único contenido de un botón, el botón necesita `aria-label`.
 - Las flechas decorativas en los links van como `<span aria-hidden="true">→</span>`.
-- Los títulos no saltan niveles: un `h1` por página, después `h2` y `h3`. Si un título tiene que verse chico (como "trayectoria profesional"), se le aplican las clases de eyebrow, pero sigue siendo un `h2`.
+- Los títulos no saltan niveles: un `h1` por página, después `h2` y `h3`. Los antetítulos (`bit-eyebrow`) son párrafos, no títulos.
 - Las animaciones infinitas (`animate-ping`, `animate-pulse`) se limitan con `[animation-iteration-count:N]` para que terminen antes de 5 segundos (criterio 2.2.2), y llevan `motion-reduce:animate-none`.
 - El CSS respeta `prefers-reduced-motion`: `.reveal`, `.hover-lift` y la trayectoria se muestran sin transición.
-- El foco de teclado se ve con un contorno de `#8dd4c0` (`a:focus-visible, button:focus-visible` en el `<style>` de cada página).
+- El foco de teclado es un anillo de 2px en `foco`, separado 2px del elemento (`:focus-visible` en `src/tailwind.css`). Dentro del CTA pasa a gris arena.
 - Si un link tiene `aria-label`, este incluye el texto visible (por ejemplo "Email: enviar correo…"), por el criterio 2.5.3.
 
 ## Seguridad

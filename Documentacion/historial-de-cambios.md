@@ -6,6 +6,40 @@ Las versiones son 0.x porque el sitio todavía no está publicado. La 1.0.0 qued
 
 ---
 
+## Versión 0.14.0
+
+**Fecha de actualización:** 7 de octubre de 2026
+
+- **El sitio pasa al design system bitacorait** (Manual de Marca v4.1), con el estilo "tech girl ordenada". Reemplaza a Technical Artisan.
+  - **Por qué:** decisión de Sabri, para que la landing use la identidad visual de la marca. El primer intento con bitacorait no le gustó; después se actualizó el design system con el estilo "tech girl ordenada" y se volvió a implementar.
+- **Tema claro y oscuro automáticos.** El claro es el del manual: fondo gris arena, títulos en verde oscuro y texto gris carbón. El oscuro (PROPUESTA) se aplica si el sistema del visitante está en modo oscuro.
+  - **Por qué:** decisión de Sabri. El design system ya trae los dos temas con tokens semánticos que llegan a 4,5:1.
+- **Tipografía:** Rubik para todo y Fraunces 500 para los títulos de sección (`h2`), en lugar de Bogart, que no se puede distribuir. Se quitó JetBrains Mono y no se usa tipografía monoespaciada.
+  - Fraunces se sirve desde el propio sitio (`assets/fonts/`), con su licencia OFL. Por eso la CSP ahora permite fuentes de `'self'`.
+- **Componentes del design system escritos en HTML:**
+  - Botones (`bit-btn`), etiquetas, encabezados de sección numerados (01, 02) y tarjetas.
+  - El bloque CTA en verde oscuro.
+  - Fondo de puntos en secciones alternadas.
+  - Checklist para lo que incluye cada etapa.
+  - Terminal para el "después" del puente técnico.
+  - Se quitaron los corchetes en las esquinas (`tech-border`).
+  - **Por qué:** seguir el design system al pie, como pidió Sabri.
+- **Cambios de texto menores:**
+  - Los botones pasan de mayúsculas a oración: "Charlemos" y "Agendar reunión".
+  - El puente técnico tiene título ("El puente técnico") y la Terminal se llama `validar-email.md`.
+  - "Trayectoria profesional" pasa a ser un título visible en Fraunces.
+- **Animaciones al hacer scroll y al pasar el mouse** (`assets/js/animaciones.js`):
+  - Los bloques suben y aparecen en cascada.
+  - La raya de los antetítulos numerados crece.
+  - Se dibujan el subrayado del "¿Quién sabe qué se rompe?" y el tachado de la frase del "Hoy".
+  - La Terminal se tipea línea por línea, con un cursor que parpadea.
+  - Los tildes de la checklist se marcan en orden y la flecha del puente fluye.
+  - Al pasar el mouse, los botones se levantan, la flecha → avanza y las tarjetas cambian el borde a acento.
+  - **Por qué:** pedido de Sabri, para que el sitio sea más atractivo visualmente. Las animaciones refuerzan el estilo "tech girl ordenada": muestran el orden y el "antes y después" en lugar de decorar.
+  - Con "reducir movimiento" activado, o sin JavaScript, todo se ve quieto y completo. Ninguna animación dura más de 5 segundos (WCAG 2.2.2).
+- **Trayectoria de Sobre Mí:** cada ítem es una grilla de tres columnas (año, punto y tarjeta), con el punto centrado sobre la línea. Antes, en los ítems de la izquierda el año quedaba pegado al punto.
+- **Se verificó** con Chrome headless (por el protocolo de depuración) en las 4 páginas, a 1280px y a 390px, en los dos temas: axe-core da 0 violaciones, también con el modal abierto, y no hay scroll horizontal.
+
 ## Versión 0.13.0
 
 **Fecha de actualización:** 7 de octubre de 2026

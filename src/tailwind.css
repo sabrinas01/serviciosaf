@@ -1,142 +1,378 @@
 /*
   Configuración de Tailwind 4 del sitio: es la única fuente (en v4 ya no hay
-  tailwind.config.js). Los tokens de diseño están en @theme.
-  Después de cambiar clases en los HTML o este archivo, corré `npm run build:css`.
+  tailwind.config.js). Después de cambiar clases en los HTML o este archivo,
+  corré `npm run build:css`.
+
+  Tokens y componentes del design system "bitacorait" (Manual de Marca v4.1):
+  https://claude.ai/artifact/8zRe5meUXCZdBrxcnYjuP2
+  Los valores marcados PROPUESTA no están en el manual. Si cambia algo en el
+  design system, cambialo acá.
 */
 @import 'tailwindcss' source(none);
 @source '../*.html';
 
 @plugin '@tailwindcss/forms';
 
-/* Modo oscuro por clase (<html class="dark">), igual que en v3. */
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-  --color-on-tertiary-container: #979793;
-  --color-secondary: #8dd4c0;
-  --color-inverse-on-surface: #303030;
-  --color-primary-fixed: #c2ecd6;
-  --color-primary-container: #0f3627;
-  --color-on-tertiary-fixed: #1a1c19;
-  --color-on-secondary-fixed: #002019;
-  --color-tertiary-fixed: #e3e3de;
-  --color-surface-container: #1f2020;
-  --color-error-container: #93000a;
-  --color-on-surface: #e4e2e1;
-  --color-on-primary-fixed: #002115;
-  --color-on-primary: #103728;
-  --color-surface-container-high: #2a2a2a;
-  --color-secondary-container: #005849;
-  --color-on-secondary-fixed-variant: #005143;
-  --color-on-primary-fixed-variant: #294e3d;
-  --color-error: #ffb4ab;
-  --color-surface-dim: #131313;
-  --color-secondary-fixed: #a8f1dc;
-  --color-outline-variant: #414844;
-  --color-surface-variant: #353535;
-  --color-on-error-container: #ffdad6;
-  --color-tertiary-container: #2e302d;
-  --color-inverse-surface: #e4e2e1;
-  --color-on-secondary: #00382d;
-  --color-primary: #a7d0ba;
-  --color-outline: #8b938d;
-  --color-on-tertiary: #2f312e;
-  --color-on-tertiary-fixed-variant: #464744;
-  --color-surface-container-highest: #353535;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface: #131313;
-  --color-on-primary-container: #78a08c;
-  --color-secondary-fixed-dim: #8dd4c0;
-  --color-surface-container-low: #1b1c1c;
-  --color-on-background: #e4e2e1;
-  --color-inverse-primary: #406654;
-  --color-surface-bright: #393939;
-  --color-tertiary-fixed-dim: #c7c7c2;
-  --color-surface-tint: #a7d0ba;
-  --color-on-surface-variant: #c1c8c2;
-  --color-on-error: #690005;
-  --color-tertiary: #c7c7c2;
-  --color-primary-fixed-dim: #a7d0ba;
-  --color-background: #131313;
-  --color-on-secondary-container: #85cdb9;
-  --color-teal-accent: #367e6d;
-
-  /* Radios de Technical Artisan: 4px (rounded) en botones, inputs y cards. */
-  --radius: 0.25rem;
-  --radius-sm: 0.125rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-
-  --spacing-max-width: 1080px;
-  --spacing-base: 4px;
-  --spacing-unit: 7px;
-  --spacing-section-v-md: 70px;
-  /* Margen lateral: 20px en mobile (< 768px) y 28px desde md. */
-  --spacing-margin-page-mobile: 20px;
-  --spacing-margin-page: 28px;
-  --spacing-gutter: 28px;
-  --spacing-section-v-lg: 84px;
-  --spacing-grid-gap: 20px;
-
-  --font-display-h1: Rubik;
-  --font-mono-eyebrow: 'JetBrains Mono';
-  --font-body-small: Rubik;
-  --font-section-h2: Rubik;
-  --font-ui-action: 'JetBrains Mono';
-  --font-mono-data: 'JetBrains Mono';
-  --font-display-h1-mobile: Rubik;
-  --font-card-h3: Rubik;
-  --font-body-main: Rubik;
-
-  --text-display-h1: 54px;
-  --text-display-h1--line-height: 1.08;
-  --text-display-h1--letter-spacing: -0.02em;
-  --text-display-h1--font-weight: 900;
-  --text-mono-eyebrow: 12px;
-  --text-mono-eyebrow--line-height: 1;
-  --text-mono-eyebrow--letter-spacing: 0.08em;
-  --text-mono-eyebrow--font-weight: 600;
-  --text-body-small: 15px;
-  --text-body-small--line-height: 1.5;
-  --text-body-small--font-weight: 400;
-  --text-section-h2: 32px;
-  --text-section-h2--line-height: 1.2;
-  --text-section-h2--letter-spacing: -0.01em;
-  --text-section-h2--font-weight: 900;
-  --text-ui-action: 12.5px;
-  --text-ui-action--line-height: 1;
-  --text-ui-action--font-weight: 500;
-  --text-mono-data: 13px;
-  --text-mono-data--line-height: 1.4;
-  --text-mono-data--font-weight: 500;
-  --text-display-h1-mobile: 32px;
-  --text-display-h1-mobile--line-height: 1.1;
-  --text-display-h1-mobile--font-weight: 900;
-  --text-card-h3: 18px;
-  --text-card-h3--line-height: 1.4;
-  --text-card-h3--font-weight: 700;
-  --text-body-main: 17.5px;
-  --text-body-main--line-height: 1.5;
-  --text-body-main--font-weight: 400;
+/* Fraunces 500 reemplaza a Bogart en la web (h2). Archivo del design system,
+   con los ejes SOFT 50 y WONK 0 fijados. Licencia: assets/fonts/Fraunces-OFL.txt */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-Soft50.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 /*
-  Compatibilidad con v3: en Tailwind 4 el color de borde por defecto pasó a
-  ser currentcolor y los botones dejaron de tener cursor: pointer. Estas
-  reglas mantienen el aspecto que tenía el sitio con v3.
+  Colores. Los de marca valen lo mismo en los dos temas; en las páginas se usan
+  los semánticos, que cambian con el tema. El claro es el del manual; el oscuro
+  (PROPUESTA) se aplica si el sistema del visitante está en modo oscuro.
 */
+:root {
+  color-scheme: light dark;
+
+  --gris-arena: #d8d8d3;
+  --verde-oscuro: #0f3627;
+  --verde-azulado: #367e6d;
+  --gris-carbon: #2b2b2b;
+  --blanco: #ffffff;
+  --verde-claro: #6fb8a6;
+
+  --fondo: var(--gris-arena);
+  --fondo-elevado: #e6e6e2;
+  --titulo: var(--verde-oscuro);
+  --texto: var(--gris-carbon);
+  --texto-suave: #55554f;
+  --acento: var(--verde-azulado);
+  --on-acento: var(--blanco);
+  --primario: var(--verde-oscuro);
+  --on-primario: var(--gris-arena);
+  --borde: #7a7a75;
+  --foco: var(--verde-oscuro);
+  --grilla: #bdbdb7;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: var(--gris-carbon);
+    --fondo-elevado: #363636;
+    --titulo: var(--gris-arena);
+    --texto: var(--gris-arena);
+    --texto-suave: #b5b5af;
+    --acento: var(--verde-claro);
+    --on-acento: var(--verde-oscuro);
+    --primario: var(--gris-arena);
+    --on-primario: var(--verde-oscuro);
+    --borde: #8a8a85;
+    --foco: var(--verde-claro);
+    --grilla: #444444;
+  }
+}
+
+@theme inline {
+  --color-gris-arena: var(--gris-arena);
+  --color-verde-oscuro: var(--verde-oscuro);
+  --color-verde-azulado: var(--verde-azulado);
+  --color-gris-carbon: var(--gris-carbon);
+  --color-blanco: var(--blanco);
+  --color-verde-claro: var(--verde-claro);
+
+  --color-fondo: var(--fondo);
+  --color-fondo-elevado: var(--fondo-elevado);
+  --color-titulo: var(--titulo);
+  --color-texto: var(--texto);
+  --color-texto-suave: var(--texto-suave);
+  --color-acento: var(--acento);
+  --color-on-acento: var(--on-acento);
+  --color-primario: var(--primario);
+  --color-on-primario: var(--on-primario);
+  --color-borde: var(--borde);
+  --color-foco: var(--foco);
+  --color-grilla: var(--grilla);
+}
+
+@theme {
+  /* Rubik para todo (h1 y cuerpo); Fraunces para los h2. Sin monoespaciada. */
+  --font-sans: Rubik, system-ui, sans-serif;
+  --font-fraunces: Fraunces, Georgia, serif;
+
+  /* Estilos de texto del design system (tamaños: PROPUESTA). */
+  --text-h1: 40px;
+  --text-h1--line-height: 44px;
+  --text-h1--font-weight: 700;
+  --text-h2: 28px;
+  --text-h2--line-height: 34px;
+  --text-h2--font-weight: 500;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-small: 13px;
+  --text-small--line-height: 18px;
+  /* Texto de botones y navegación (bit-btn-md). */
+  --text-ui: 15px;
+  --text-ui--line-height: 20px;
+  --text-ui--font-weight: 500;
+
+  /* Radios (PROPUESTA): sm etiquetas, md botones, lg tarjetas y bloques. */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Espaciado del design system (grilla de 8px) y ancho de página. */
+  --spacing-space-1: 8px;
+  --spacing-space-2: 16px;
+  --spacing-space-3: 24px;
+  --spacing-space-4: 40px;
+  --spacing-max-width: 1040px;
+  --spacing-section-v: 80px;
+}
+
 @layer base {
+  /* Compatibilidad con v3: color de borde por defecto y cursor de los botones. */
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--borde);
   }
 
   button:not(:disabled),
   [role='button']:not(:disabled) {
     cursor: pointer;
   }
+
+  body {
+    background: var(--fondo);
+    color: var(--texto);
+  }
+
+  /* Foco: anillo de 2px en `foco`, separado 2px del elemento. */
+  :focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 2px;
+  }
+}
+
+/*
+  Componentes del design system (components/bundle.css), como clases CSS.
+  En el design system son componentes de React; acá se escriben en HTML con
+  la misma estructura y las mismas clases.
+*/
+@layer components {
+  /* Button */
+  .bit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+  }
+  .bit-btn-md { font-size: 15px; min-height: 40px; padding: 0 var(--space-3); }
+  .bit-btn-lg { font-size: 17px; min-height: 48px; padding: 0 var(--space-4); }
+  .bit-btn-primario { background: var(--primario); color: var(--on-primario); }
+  .bit-btn-cta { background: var(--acento); color: var(--on-acento); }
+  .bit-btn-secundario { background: transparent; color: var(--titulo); border-color: var(--borde); }
+  .bit-btn-claro { background: var(--gris-arena); color: var(--verde-oscuro); }
+  .bit-btn:hover { filter: brightness(1.08); }
+  .bit-btn-secundario:hover { filter: none; background: var(--fondo-elevado); }
+  .bit-btn:disabled { opacity: 0.5; cursor: not-allowed; filter: none; }
+
+  /* Tag */
+  .bit-tag {
+    display: inline-block;
+    font-size: 13px;
+    line-height: 22px;
+    font-weight: 500;
+    padding: 0 var(--space-1);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+  }
+  .bit-tag-acento { border-color: var(--acento); color: var(--titulo); }
+
+  /* SectionHeader: número, raya y antetítulo */
+  .bit-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .bit-num { color: var(--titulo); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .bit-eyebrow-rule { width: 24px; height: 1px; background: var(--borde); }
+
+  /* Card */
+  .bit-card {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    background: var(--fondo-elevado);
+    border: 1px solid var(--borde);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+  }
+
+  /* CtaBlock: igual en los dos temas, con el foco en gris-arena */
+  .bit-cta {
+    --foco: var(--gris-arena);
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+    background: var(--verde-oscuro);
+    color: var(--gris-arena);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  /* Section: fondo de grilla (decorativo) */
+  .bit-bg-puntos {
+    background-color: var(--fondo);
+    background-image: radial-gradient(var(--grilla) 1.2px, transparent 1.4px);
+    background-size: var(--space-3) var(--space-3);
+  }
+  .bit-bg-cuadricula {
+    background-color: var(--fondo);
+    background-image: linear-gradient(var(--grilla) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grilla) 1px, transparent 1px);
+    background-size: var(--space-4) var(--space-4);
+  }
+
+  /* Checklist */
+  .bit-check-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--titulo);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .bit-check-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+  .bit-check-item { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; color: var(--texto); }
+  .bit-check-box {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    border: 1.5px solid var(--titulo);
+    border-radius: var(--radius-sm);
+    color: var(--on-primario);
+  }
+  .is-done .bit-check-box { background: var(--primario); border-color: var(--primario); }
+
+  /* Terminal: igual en los dos temas */
+  .bit-term { margin: 0; background: var(--verde-oscuro); color: var(--gris-arena); border-radius: var(--radius-md); overflow: hidden; }
+  .bit-term-bar { display: flex; align-items: center; gap: var(--space-2); padding: 10px var(--space-2); border-bottom: 1px solid var(--verde-azulado); }
+  .bit-term-dots { display: inline-flex; gap: 6px; }
+  .bit-term-dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--gris-arena); }
+  .bit-term-dots i:nth-child(2) { background: var(--verde-claro); }
+  .bit-term-dots i:nth-child(3) { background: var(--verde-azulado); }
+  .bit-term-title { font-size: 13px; color: var(--gris-arena); }
+  .bit-term-body { display: grid; gap: 6px; padding: var(--space-2) var(--space-3) var(--space-3); font-size: 15px; line-height: 22px; }
+  .bit-term-line { display: grid; grid-template-columns: 20px 1fr; margin: 0; }
+  .bit-term-mark { color: var(--verde-claro); font-weight: 700; }
+  .bit-term-cmd { font-weight: 500; }
+  .bit-term-ok { font-weight: 500; }
+  .bit-term-cursor { display: inline-block; width: 8px; height: 16px; margin-left: 4px; vertical-align: -2px; background: var(--verde-claro); }
+
+  /* Subrayado y tachado que se pueden dibujar (ver Animaciones). */
+  .subrayar {
+    background: linear-gradient(var(--acento), var(--acento)) no-repeat 0 100% / 100% 3px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .tachar {
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 100% 1px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+
+/*
+  Animaciones. Las dispara assets/js/animaciones.js con la clase .en-vista.
+  Todo vive dentro de prefers-reduced-motion: no-preference: con "reducir
+  movimiento" activado, o sin JS (.js-anim), la página se ve quieta y completa.
+  Ninguna animación dura más de 5 segundos (WCAG 2.2.2).
+*/
+@keyframes tipear { to { clip-path: inset(0 0 0 0); } }
+@keyframes parpadear { 50% { opacity: 0; } }
+@keyframes fluir { from { stroke-dashoffset: 20; } to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrada: sube y aparece, en cascada según --i. */
+  .js-anim [data-anim],
+  .js-anim [data-anim-grupo] > * {
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s ease;
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  .js-anim [data-anim='subir']:not(.en-vista),
+  .js-anim [data-anim-grupo] > :not(.en-vista) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .js-anim [data-anim='aparecer']:not(.en-vista) {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  /* La raya del antetítulo numerado crece. */
+  .js-anim [data-anim] .bit-eyebrow-rule,
+  .js-anim .bit-eyebrow[data-anim] .bit-eyebrow-rule {
+    transform-origin: left;
+    transition: transform 0.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .js-anim [data-anim]:not(.en-vista) .bit-eyebrow-rule { transform: scaleX(0); }
+
+  /* Subrayado del hero y tachado del "Hoy": se dibujan de izquierda a derecha. */
+  .js-anim .subrayar { transition: background-size 0.9s 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .js-anim [data-anim]:not(.en-vista) .subrayar { background-size: 0% 3px; }
+  .js-anim .tachar { transition: background-size 1s 0.5s ease-in-out; }
+  .js-anim [data-anim]:not(.en-vista) .tachar { background-size: 0% 1px; }
+
+  /* Terminal: cada línea se "tipea" después de la anterior, y el cursor parpadea 4 veces. */
+  .js-anim [data-anim='terminal'] .bit-term-line { clip-path: inset(0 100% 0 0); }
+  .js-anim [data-anim='terminal'].en-vista .bit-term-line {
+    animation: tipear 0.5s steps(16, end) forwards;
+    animation-delay: calc(0.3s + var(--n, 0) * 0.55s);
+  }
+  .js-anim [data-anim='terminal'].en-vista .bit-term-cursor { animation: parpadear 0.8s steps(1) 2.6s 4; }
+
+  /* Checklist: cada casilla aparece y se dibuja el tilde, en orden según --n. */
+  .js-anim [data-anim='check'] .bit-check-box {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+    transition-delay: calc(0.1s + var(--n, 0) * 120ms);
+  }
+  .js-anim [data-anim='check']:not(.en-vista) .bit-check-box { opacity: 0; transform: scale(0.6); }
+  .js-anim [data-anim='check'] .bit-check-box path {
+    stroke-dasharray: 16;
+    transition: stroke-dashoffset 0.35s ease;
+    transition-delay: calc(0.3s + var(--n, 0) * 120ms);
+  }
+  .js-anim [data-anim='check']:not(.en-vista) .bit-check-box path { stroke-dashoffset: 16; }
+
+  /* Flecha del puente técnico: la línea punteada fluye 4 veces. */
+  .js-anim [data-anim].en-vista .flecha-puente line { stroke-dasharray: 5 5; animation: fluir 0.9s linear 0.4s 4; }
+
+  /* Al pasar el mouse: botones que se levantan, flecha que avanza, tarjetas con borde en acento. */
+  .bit-btn { transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease; }
+  .bit-btn:hover { transform: translateY(-1px); }
+  .flecha { display: inline-block; transition: transform 0.2s ease; }
+  .bit-btn:hover .flecha,
+  a:hover > .flecha { transform: translateX(3px); }
+  .bit-card { transition: border-color 0.25s ease, transform 0.3s ease; }
 }

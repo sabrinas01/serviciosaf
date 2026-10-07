@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html class="scroll-smooth dark" lang="es">
+<html class="scroll-smooth" lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- Seguridad: dominios permitidos (ver CLAUDE.md > Seguridad antes de agregar un script o servicio externo) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="color-scheme" content="light dark"/>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJFKG629HC"></script>
 <script>
@@ -86,14 +87,12 @@
 }
 </script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&amp;family=Jetbrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="assets/fonts/Fraunces-Soft50.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
 <link href="assets/css/tailwind.css" rel="stylesheet"/>
+<script src="assets/js/animaciones.js"></script>
 <style>
-  body {
-    background-color: #131313;
-    color: #e4e2e1;
-  }
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -110,35 +109,7 @@
     transform: translateY(-4px);
   }
 
-  /* Technical accents */
-  .tech-border {
-    position: relative;
-  }
-  .tech-border::before, .tech-border::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: #8dd4c0;
-    border-style: solid;
-    pointer-events: none;
-  }
-  .tech-border::before {
-    top: -1px;
-    left: -1px;
-    border-width: 2px 0 0 2px;
-  }
-  .tech-border::after {
-    bottom: -1px;
-    right: -1px;
-    border-width: 0 2px 2px 0;
-  }
-
-  /* Accesibilidad */
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid #8dd4c0;
-    outline-offset: 3px;
-  }
+  /* Accesibilidad (el anillo de foco está en src/tailwind.css) */
   @media (prefers-reduced-motion: reduce) {
     .reveal, .hover-lift, .hover-lift:hover {
       transition: none;
@@ -179,25 +150,25 @@
   });
 </script>
 </head>
-<body class="font-body-main text-body-main antialiased bg-background text-on-background selection:bg-secondary selection:text-background">
-<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded">Saltar al contenido</a>
-<!-- TopAppBar -->
-<header class="bg-surface/90 backdrop-blur-xs border-b border-outline-variant docked full-width top-0 sticky z-50">
-<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page flex justify-between items-center h-[70px]">
-<a class="font-section-h2 text-section-h2 font-black text-primary" href="index.html">Sabrina Sanso</a>
+<body class="text-body bg-fondo text-texto selection:bg-acento selection:text-on-acento">
+<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bit-btn bit-btn-primario bit-btn-md">Saltar al contenido</a>
+<!-- Header -->
+<header class="bg-fondo/90 backdrop-blur-xs border-b border-borde top-0 sticky z-50">
+<div class="max-w-max-width mx-auto px-space-3 md:px-space-4 flex justify-between items-center h-[70px]">
+<a class="text-xl font-bold text-titulo" href="index.html">Sabrina Sanso</a>
 <nav class="hidden md:flex gap-6 items-center">
-<a class="text-secondary font-ui-action text-ui-action" href="index.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
+<a class="text-ui text-titulo underline decoration-acento decoration-2 underline-offset-8" href="index.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
 </nav>
-<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
-<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
+<a class="hidden md:inline-flex bit-btn bit-btn-primario bit-btn-md" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
+<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-titulo border border-borde rounded-md hover:bg-fondo-elevado transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
 </div>
-<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page-mobile md:px-margin-page pb-6" aria-label="Menú principal">
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-secondary" href="index.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
-<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
+<nav id="menu-mobile" class="md:hidden hidden border-t border-borde bg-fondo px-space-3 pb-6" aria-label="Menú principal">
+<a class="block py-3 border-b border-borde/40 text-ui text-titulo underline decoration-acento decoration-2 underline-offset-4" href="index.html" aria-current="page" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
+<a class="mt-5 flex bit-btn bit-btn-primario bit-btn-md" href="#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
 </nav>
 <script>
   (() => {
@@ -219,148 +190,120 @@
 </script>
 </header>
 <main id="contenido">
-<!-- Hero Section -->
-<section class="pt-section-v-lg pb-section-v-md px-margin-page-mobile md:px-margin-page reveal active relative overflow-hidden">
-<div class="absolute top-0 right-0 w-1/3 h-full bg-primary-container/20 -skew-x-12 transform origin-top-right -z-10"></div>
-<div class="max-w-max-width mx-auto">
-<div class="grid md:grid-cols-12 gap-8 items-center">
-<div class="md:col-span-8 z-10">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest block mb-6">Analista Funcional IT · +4 años en equipos de producto</span>
-<h1 class="font-display-h1-mobile md:font-display-h1 text-display-h1-mobile md:text-display-h1 text-on-surface mb-6">
-        Tu producto funciona. Pero si mañana se va la persona que lo entiende<div><span class="text-secondary italic">¿Quién sabe qué se rompe?</span>
-</div></h1>
-<p class="font-body-main text-body-main text-on-surface-variant max-w-2xl mb-8">
-        Relevo cómo funciona tu producto hoy y te dejo documentación que tu equipo puede consultar y actualizar, sin depender de una sola persona.
-      </p>
-<ul class="flex flex-wrap gap-x-6 gap-y-2 mb-10">
-<li class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-base! text-secondary" aria-hidden="true">rocket_launch</span>Startups de 1 a 3 años</li>
-<li class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-base! text-secondary" aria-hidden="true">deployed_code</span>Producto en producción</li>
-<li class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-base! text-secondary" aria-hidden="true">description</span>Documentación viva</li>
+<!-- Hero -->
+<section class="py-section-v px-space-3 md:px-space-4 bit-bg-puntos reveal active">
+<div class="max-w-max-width mx-auto grid md:grid-cols-12 gap-space-4 items-center">
+<div class="md:col-span-8 grid gap-space-3">
+<header class="grid gap-space-2" data-anim-grupo>
+<p class="bit-eyebrow">Analista Funcional IT · +4 años en equipos de producto</p>
+<h1 class="text-h1 text-titulo">Tu producto funciona. Pero si mañana se va la persona que lo entiende <span class="block text-acento"><span class="subrayar">¿Quién sabe qué se rompe?</span></span></h1>
+<p class="text-body text-texto-suave max-w-[560px]">Relevo cómo funciona tu producto hoy y te dejo documentación que tu equipo puede consultar y actualizar, sin depender de una sola persona.</p>
+</header>
+<ul class="flex flex-wrap gap-space-1" data-anim-grupo>
+<li><span class="bit-tag">Startups de 1 a 3 años</span></li>
+<li><span class="bit-tag">Producto en producción</span></li>
+<li><span class="bit-tag bit-tag-acento">Documentación viva</span></li>
 </ul>
-<div class="flex flex-wrap gap-6 items-center">
-<a class="inline-flex bg-primary text-on-primary font-ui-action font-medium px-6 py-3 rounded hover:bg-secondary hover:-translate-y-px transition-all text-base" href="#contacto" data-track="clic_hero_charlemos" data-track-params='{"location":"hero_principal"}'>CHARLEMOS</a>
-<a class="font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="servicios.html" data-track="clic_hero_servicios" data-track-params='{"location":"hero_principal"}'>Ver cómo trabajo <span aria-hidden="true">→</span></a>
+<div class="flex flex-wrap gap-space-2 items-center" data-anim="subir">
+<a class="bit-btn bit-btn-cta bit-btn-lg" href="#contacto" data-track="clic_hero_charlemos" data-track-params='{"location":"hero_principal"}'>Charlemos</a>
+<a class="bit-btn bit-btn-secundario bit-btn-lg" href="servicios.html" data-track="clic_hero_servicios" data-track-params='{"location":"hero_principal"}'>Ver cómo trabajo <span class="flecha" aria-hidden="true">→</span></a>
 </div>
 </div>
-<!-- Hero visual -->
-<div class="md:col-span-4 z-10 hidden md:block">
+<!-- Foto -->
+<div class="md:col-span-4 hidden md:block" data-anim="aparecer">
 <div class="relative">
-<div class="aspect-4/5 bg-surface border border-outline-variant rounded overflow-hidden tech-border">
+<div class="aspect-4/5 bg-fondo-elevado border border-borde rounded-lg overflow-hidden">
 <img src="assets/perfil-sabrina.png" alt="Sabrina Sanso, analista funcional técnica IT" class="w-full h-full object-cover" width="400" height="500" fetchpriority="high"/>
 </div>
-<div class="absolute -bottom-5 -left-6 bg-surface-container-highest border border-teal-accent px-4 py-3 rounded">
-<span class="font-mono-data text-mono-data text-on-surface block">Sabrina Sanso</span>
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase">AF técnica · Scrum Master</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Problemas comunes -->
-<section class="py-section-v-md px-margin-page-mobile md:px-margin-page border-t border-outline-variant bg-surface-container-low reveal active">
-<div class="max-w-max-width mx-auto">
-<div class="grid md:grid-cols-12 gap-12">
-<div class="md:col-span-4">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-4 block">🚩 lo que suele pasar</span>
-<h2 class="font-section-h2 text-section-h2 text-primary mb-6">
-        Si tu startup tiene entre 1 y 3 años y ya tiene producto, probablemente reconocés algo de esto:
-      </h2>
-</div>
-<div class="md:col-span-8">
-<div class="grid sm:grid-cols-2 gap-4">
-<div class="bg-surface p-gutter border border-outline-variant hover:border-secondary/50 transition-colors duration-300 tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary block mb-2">01</span>
-<p class="font-body-small text-body-small text-on-surface">El conocimiento del producto está en 2 o 3 cabezas, no en un documento.</p>
-</div>
-<div class="bg-surface p-gutter border border-outline-variant hover:border-secondary/50 transition-colors duration-300 tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary block mb-2">02</span>
-<p class="font-body-small text-body-small text-on-surface">Cada requisito se interpreta distinto según quién lo lea.</p>
-</div>
-<div class="bg-surface p-gutter border border-outline-variant hover:border-secondary/50 transition-colors duration-300 tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary block mb-2">03</span>
-<p class="font-body-small text-body-small text-on-surface">Modificar algo rompe otra cosa que nadie previó.</p>
-</div>
-<div class="bg-surface p-gutter border border-outline-variant hover:border-secondary/50 transition-colors duration-300 tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary block mb-2">04</span>
-<p class="font-body-small text-body-small text-on-surface">Priorizar mejoras es a ojo, sin mapa de dependencias.</p>
-</div>
-<div class="bg-surface p-gutter border border-outline-variant hover:border-secondary/50 transition-colors duration-300 tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary block mb-2">05</span>
-<p class="font-body-small text-body-small text-on-surface">La deuda técnica está ahí, pero nadie la tiene listada.</p>
-</div>
-<div class="bg-surface p-gutter border border-outline-variant hover:border-secondary/50 transition-colors duration-300 tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary block mb-2">06</span>
-<p class="font-body-small text-body-small text-on-surface">Explicarle el producto a alguien nuevo lleva semanas de reuniones.</p>
-</div>
+<div class="absolute -bottom-5 -left-6 bg-fondo-elevado border border-borde rounded-md px-space-2 py-space-1">
+<span class="block text-small font-medium text-titulo">Sabrina Sanso</span>
+<span class="block text-small text-texto-suave uppercase tracking-[0.08em]">AF técnica · Scrum Master</span>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- El Puente Técnico -->
-<section class="py-section-v-md px-margin-page-mobile md:px-margin-page border-t border-outline-variant reveal active bg-surface-container-lowest">
-<div class="max-w-max-width mx-auto">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-8 block text-center">el puente técnico</span>
-<div class="flex flex-col md:flex-row items-stretch justify-center gap-4">
-<!-- Before -->
-<div class="bg-surface-container border border-outline-variant p-gutter w-full md:w-[45%] relative tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-on-surface-variant uppercase block mb-4">Hoy</span>
-<p class="font-body-small text-body-small italic text-on-surface-variant line-through decoration-error/50">"Eso lo hizo Juan hace un año, creo que valida el email pero no me acuerdo si contra el CRM o contra la base."</p>
+<!-- 01 Lo que suele pasar -->
+<section class="py-section-v px-space-3 md:px-space-4 border-t border-borde reveal active">
+<div class="max-w-max-width mx-auto grid md:grid-cols-12 gap-space-4">
+<header class="md:col-span-4 grid gap-space-2 content-start" data-anim-grupo>
+<p class="bit-eyebrow"><span class="bit-num">01</span><span class="bit-eyebrow-rule" aria-hidden="true"></span>🚩 lo que suele pasar</p>
+<h2 class="font-fraunces text-h2 text-titulo">Si tu startup tiene entre 1 y 3 años y ya tiene producto, probablemente reconocés algo de esto:</h2>
+</header>
+<ol class="md:col-span-8 grid sm:grid-cols-2 gap-space-3" data-anim-grupo>
+<li class="bit-card hover:border-acento"><span class="bit-num text-ui" aria-hidden="true">01</span><p class="text-body text-texto">El conocimiento del producto está en 2 o 3 cabezas, no en un documento.</p></li>
+<li class="bit-card hover:border-acento"><span class="bit-num text-ui" aria-hidden="true">02</span><p class="text-body text-texto">Cada requisito se interpreta distinto según quién lo lea.</p></li>
+<li class="bit-card hover:border-acento"><span class="bit-num text-ui" aria-hidden="true">03</span><p class="text-body text-texto">Modificar algo rompe otra cosa que nadie previó.</p></li>
+<li class="bit-card hover:border-acento"><span class="bit-num text-ui" aria-hidden="true">04</span><p class="text-body text-texto">Priorizar mejoras es a ojo, sin mapa de dependencias.</p></li>
+<li class="bit-card hover:border-acento"><span class="bit-num text-ui" aria-hidden="true">05</span><p class="text-body text-texto">La deuda técnica está ahí, pero nadie la tiene listada.</p></li>
+<li class="bit-card hover:border-acento"><span class="bit-num text-ui" aria-hidden="true">06</span><p class="text-body text-texto">Explicarle el producto a alguien nuevo lleva semanas de reuniones.</p></li>
+</ol>
 </div>
-<!-- Bridge SVG -->
-<div class="w-12 flex justify-center items-center text-secondary rotate-90 md:rotate-0 my-4 md:my-0">
-<svg class="w-full" viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg">
+</section>
+<!-- 02 El puente técnico -->
+<section class="py-section-v px-space-3 md:px-space-4 border-t border-borde bit-bg-puntos reveal active">
+<div class="max-w-max-width mx-auto">
+<header class="grid gap-space-2 max-w-[640px] mb-space-4" data-anim-grupo>
+<p class="bit-eyebrow"><span class="bit-num">02</span></p>
+<h2 class="font-fraunces text-h2 text-titulo">El puente técnico</h2>
+</header>
+<div class="grid md:grid-cols-[1fr_auto_1fr] gap-space-3 items-center">
+<!-- Antes -->
+<div class="grid gap-space-1" data-anim="subir">
+<p class="bit-eyebrow">Hoy</p>
+<p class="text-body italic text-texto-suave"><span class="tachar">"Eso lo hizo Juan hace un año, creo que valida el email pero no me acuerdo si contra el CRM o contra la base."</span></p>
+</div>
+<!-- Flecha -->
+<div class="w-12 justify-self-center text-acento rotate-90 md:rotate-0" aria-hidden="true" data-anim="aparecer">
+<svg class="w-full flecha-puente" viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg">
 <line stroke="currentColor" stroke-dasharray="5 5" stroke-width="2" x1="4" x2="86" y1="20" y2="20"></line>
 <polygon fill="currentColor" points="80,14 90,20 80,26"></polygon>
 </svg>
 </div>
-<!-- After -->
-<div class="bg-teal-accent/10 border border-teal-accent p-gutter w-full md:w-[45%] relative tech-border">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase block mb-4">Después</span>
-<div class="font-mono-data text-mono-data text-primary-fixed bg-surface-container-highest/50 p-4 rounded border border-outline-variant/30">
-<span class="text-secondary">POST</span> /usuarios/validar-email <br/>
-<span class="text-on-surface-variant ml-4">→ 200 si existe en CRM</span><br/>
-<span class="text-on-surface-variant ml-4">→ 404 si no</span><br/>
-<span class="text-primary-fixed/70 mt-2 block">/* regla documentada, con dueño y fecha */</span>
+<!-- Después: Terminal -->
+<div class="grid gap-space-1" data-anim="subir">
+<p class="bit-eyebrow">Después</p>
+<figure class="bit-term" data-anim="terminal">
+<div class="bit-term-bar"><span class="bit-term-dots" aria-hidden="true"><i></i><i></i><i></i></span><figcaption class="bit-term-title">validar-email.md</figcaption></div>
+<div class="bit-term-body">
+<p class="bit-term-line bit-term-cmd"><span class="bit-term-mark" aria-hidden="true">$</span>POST /usuarios/validar-email</p>
+<p class="bit-term-line bit-term-out"><span class="bit-term-mark" aria-hidden="true">→</span>200 si existe en CRM</p>
+<p class="bit-term-line bit-term-out"><span class="bit-term-mark" aria-hidden="true">→</span>404 si no</p>
+<p class="bit-term-line bit-term-ok"><span class="bit-term-mark" aria-hidden="true">✓</span><span>Regla documentada, con dueño y fecha<span class="bit-term-cursor" aria-hidden="true"></span></span></p>
 </div>
+</figure>
 </div>
 </div>
 </div>
 </section>
 <!-- CTA -->
-<section class="py-section-v-lg px-margin-page-mobile md:px-margin-page border-t border-outline-variant reveal active bg-surface scroll-mt-[70px]" id="contacto">
+<section class="py-section-v px-space-3 md:px-space-4 border-t border-borde reveal active scroll-mt-[70px]" id="contacto">
 <div class="max-w-max-width mx-auto">
-<div class="bg-primary-container border border-teal-accent rounded p-10 md:p-14 grid md:grid-cols-2 gap-10 items-center relative tech-border overflow-hidden">
-<div class="absolute inset-0 opacity-10 bg-radial-[circle_at_bottom_right] from-secondary via-transparent to-transparent"></div>
-<div class="relative z-10">
-<h2 class="font-section-h2 text-section-h2 text-primary-fixed mb-4">¿Tu equipo necesita esto? Charlemos.</h2>
-<p class="font-body-small text-body-small text-primary-fixed/80">Agendá una reunión de 30 minutos, sin costo, y vemos juntos por dónde empezar.</p>
+<div class="bit-cta md:grid-cols-[1fr_auto] md:items-center md:gap-space-4" data-anim="aparecer">
+<div class="grid gap-space-2">
+<h2 class="font-fraunces text-h2 text-gris-arena">¿Tu equipo necesita esto? Charlemos.</h2>
+<p class="text-body text-gris-arena max-w-[560px]">Agendá una reunión de 30 minutos, sin costo, y vemos juntos por dónde empezar.</p>
 </div>
-<div class="flex justify-center md:justify-end relative z-10">
-<a class="inline-flex items-center justify-center gap-2 bg-secondary text-on-secondary font-ui-action text-ui-action px-8 py-4 rounded hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-all text-center w-full md:w-auto" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"cta_agenda_button"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>AGENDAR REUNIÓN</a>
-</div>
+<a class="bit-btn bit-btn-claro bit-btn-lg justify-self-stretch md:justify-self-end" href="https://calendar.notion.so/meet/sabrysanscaadas/bitacorait" rel="noopener" target="_blank" data-track="clic_agendar_reunion" data-track-params='{"location":"cta_agenda_button"}'><span class="material-symbols-outlined text-base!" aria-hidden="true">calendar_month</span>Agendar reunión</a>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-container-highest border-t border-outline-variant full-width">
-<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
-<div class="font-section-h2 text-section-h2 font-black text-primary text-center md:text-left">
-        Sabrina Sanso
-        <span class="block font-body-small text-body-small text-on-surface-variant mt-2 font-normal"><span style="letter-spacing: -0.32px;">© 2026 Sabrina Sanso. Todos los derechos reservados</span></span>
+<footer class="bg-fondo-elevado border-t border-borde">
+<div class="max-w-max-width mx-auto px-space-3 md:px-space-4 py-space-4 flex flex-col md:flex-row justify-between items-center gap-space-3">
+<div class="text-center md:text-left">
+<p class="text-xl font-bold text-titulo">Sabrina Sanso</p>
+<p class="text-small text-texto-suave mt-1">© 2026 Sabrina Sanso. Todos los derechos reservados</p>
 </div>
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 items-center">
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sabrina Sanso (se abre en una nueva pestaña)">LinkedIn</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bitácora IT (se abre en una nueva pestaña)">Instagram</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sabrina Sanso (se abre en una nueva pestaña)">GitHub</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="mailto:sanso.s@outlook.com" aria-label="Email: enviar correo electrónico a Sabrina Sanso">Email</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="politica-de-privacidad.html">Privacidad</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sabrina Sanso (se abre en una nueva pestaña)">LinkedIn</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bitácora IT (se abre en una nueva pestaña)">Instagram</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sabrina Sanso (se abre en una nueva pestaña)">GitHub</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="mailto:sanso.s@outlook.com" aria-label="Email: enviar correo electrónico a Sabrina Sanso">Email</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="politica-de-privacidad.html">Privacidad</a>
 </div>
-<div class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined text-sm! text-secondary" aria-hidden="true">location_on</span> San Juan, Argentina
-      </div>
+<p class="text-small text-texto-suave flex items-center gap-2"><span class="material-symbols-outlined text-sm! text-acento" aria-hidden="true">location_on</span> San Juan, Argentina</p>
 </div>
 </footer>
 </body>

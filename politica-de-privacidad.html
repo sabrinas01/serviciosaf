@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html class="scroll-smooth dark" lang="es">
+<html class="scroll-smooth" lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- Seguridad: dominios permitidos (ver CLAUDE.md > Seguridad antes de agregar un script o servicio externo) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://www.google.com.ar https://*.g.doubleclick.net https://*.clarity.ms https://c.bing.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests"/>
 <meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta name="color-scheme" content="light dark"/>
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJFKG629HC"></script>
 <script>
@@ -35,14 +36,12 @@
 <!-- URL de GitHub Pages. Si se compra un dominio propio, reemplazarla en canonical, og:url, JSON-LD, robots.txt y sitemap.xml de todas las páginas. -->
 <link rel="canonical" href="https://sabrinas01.github.io/serviciosaf/politica-de-privacidad.html"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&amp;family=Jetbrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="assets/fonts/Fraunces-Soft50.woff2" rel="preload" as="font" type="font/woff2" crossorigin/>
 <link href="assets/css/tailwind.css" rel="stylesheet"/>
+<script src="assets/js/animaciones.js"></script>
 <style>
-  body {
-    background-color: #131313;
-    color: #e4e2e1;
-  }
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -59,35 +58,7 @@
     transform: translateY(-4px);
   }
 
-  /* Technical accents */
-  .tech-border {
-    position: relative;
-  }
-  .tech-border::before, .tech-border::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-color: #8dd4c0;
-    border-style: solid;
-    pointer-events: none;
-  }
-  .tech-border::before {
-    top: -1px;
-    left: -1px;
-    border-width: 2px 0 0 2px;
-  }
-  .tech-border::after {
-    bottom: -1px;
-    right: -1px;
-    border-width: 0 2px 2px 0;
-  }
-
-  /* Accesibilidad */
-  a:focus-visible, button:focus-visible {
-    outline: 2px solid #8dd4c0;
-    outline-offset: 3px;
-  }
+  /* Accesibilidad (el anillo de foco está en src/tailwind.css) */
   @media (prefers-reduced-motion: reduce) {
     .reveal, .hover-lift, .hover-lift:hover {
       transition: none;
@@ -128,25 +99,25 @@
   });
 </script>
 </head>
-<body class="font-body-main text-body-main antialiased bg-background text-on-background selection:bg-secondary selection:text-background">
-<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bg-secondary text-on-secondary font-ui-action text-ui-action px-4 py-2 rounded">Saltar al contenido</a>
-<!-- TopAppBar -->
-<header class="bg-surface/90 backdrop-blur-xs border-b border-outline-variant docked full-width top-0 sticky z-50">
-<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page flex justify-between items-center h-[70px]">
-<a class="font-section-h2 text-section-h2 font-black text-primary" href="index.html">Sabrina Sanso</a>
+<body class="text-body bg-fondo text-texto selection:bg-acento selection:text-on-acento">
+<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 bit-btn bit-btn-primario bit-btn-md">Saltar al contenido</a>
+<!-- Header -->
+<header class="bg-fondo/90 backdrop-blur-xs border-b border-borde top-0 sticky z-50">
+<div class="max-w-max-width mx-auto px-space-3 md:px-space-4 flex justify-between items-center h-[70px]">
+<a class="text-xl font-bold text-titulo" href="index.html">Sabrina Sanso</a>
 <nav class="hidden md:flex gap-6 items-center">
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-ui-action text-ui-action" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio"}'>Inicio</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios"}'>Servicios</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí"}'>Sobre Mí</a>
 </nav>
-<a class="hidden md:inline-flex bg-primary-container text-primary font-ui-action text-ui-action px-4 py-2 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary hover:-translate-y-px transition-all" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
-<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-primary border border-outline-variant rounded hover:text-secondary hover:border-secondary transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
+<a class="hidden md:inline-flex bit-btn bit-btn-primario bit-btn-md" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"sticky_header"}'>Charlemos</a>
+<button type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 text-titulo border border-borde rounded-md hover:bg-fondo-elevado transition-colors" aria-controls="menu-mobile" aria-expanded="false" aria-label="Abrir menú" data-menu-toggle><span class="material-symbols-outlined" aria-hidden="true" data-menu-icon>menu</span></button>
 </div>
-<nav id="menu-mobile" class="md:hidden hidden border-t border-outline-variant bg-surface px-margin-page-mobile md:px-margin-page pb-6" aria-label="Menú principal">
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
-<a class="block py-3 border-b border-outline-variant/40 font-ui-action text-ui-action text-on-surface-variant hover:text-secondary transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
-<a class="mt-5 flex justify-center bg-primary-container text-primary font-ui-action text-ui-action px-4 py-3 rounded border border-primary/30 hover:bg-secondary hover:text-on-secondary transition-colors" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
+<nav id="menu-mobile" class="md:hidden hidden border-t border-borde bg-fondo px-space-3 pb-6" aria-label="Menú principal">
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="index.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"inicio","label":"Inicio","location":"menu_mobile"}'>Inicio</a>
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="servicios.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"servicios","label":"Servicios","location":"menu_mobile"}'>Servicios</a>
+<a class="block py-3 border-b border-borde/40 text-ui text-texto-suave hover:text-titulo transition-colors" href="sobre-mi.html" data-track="clic_nav_seccion" data-track-params='{"seccion":"sobre-mi","label":"Sobre Mí","location":"menu_mobile"}'>Sobre Mí</a>
+<a class="mt-5 flex bit-btn bit-btn-primario bit-btn-md" href="index.html#contacto" data-track="clic_header_charlemos" data-track-params='{"location":"menu_mobile"}'>Charlemos</a>
 </nav>
 <script>
   (() => {
@@ -169,12 +140,14 @@
 </header>
 <main id="contenido">
 <!-- Política de privacidad -->
-<section class="pt-section-v-lg pb-section-v-lg px-margin-page-mobile md:px-margin-page bg-surface-container-low" id="privacidad">
+<section class="py-section-v px-space-3 md:px-space-4" id="privacidad">
 <div class="max-w-3xl mx-auto">
-<span class="font-mono-eyebrow text-mono-eyebrow text-secondary uppercase tracking-widest mb-4 block">legal</span>
-<h1 class="font-section-h2 text-section-h2 text-primary mb-4">Política de privacidad</h1>
-<p class="font-mono-data text-mono-data text-on-surface-variant mb-10">Última actualización: 6 de octubre de 2026</p>
-<div class="space-y-10 font-body-small text-body-small text-on-surface-variant [&_h2]:font-card-h3 [&_h2]:text-card-h3 [&_h2]:text-primary [&_h2]:mb-3 [&_p]:mb-3 [&_ul]:space-y-3.5 [&_ul]:mb-3 [&_li]:relative [&_li]:pl-6 [&_li]:before:content-['>'] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:text-secondary [&_a]:text-secondary [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-secondary-fixed [&_strong]:text-on-surface">
+<header class="grid gap-space-2 mb-space-4" data-anim-grupo>
+<p class="bit-eyebrow">legal</p>
+<h1 class="text-h1 text-titulo">Política de privacidad</h1>
+<p class="text-small text-texto-suave">Última actualización: 6 de octubre de 2026</p>
+</header>
+<div class="space-y-10 text-body text-texto [&_h2]:font-fraunces [&_h2]:text-h2 [&_h2]:text-titulo [&_h2]:mb-3 [&_p]:mb-3 [&_ul]:space-y-2 [&_ul]:mb-3 [&_li]:relative [&_li]:pl-6 [&_li]:before:content-['>'] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:font-bold [&_li]:before:text-acento [&_a]:text-titulo [&_a]:underline [&_a]:underline-offset-2 [&_a]:decoration-acento [&_a]:hover:decoration-2 [&_strong]:font-medium [&_strong]:text-titulo">
 <div>
 <h2>Quién es responsable</h2>
 <p>Este sitio es de <strong>Sabrina Sanso</strong> (Bitácora IT), analista funcional con domicilio en San Juan, Argentina. Para cualquier consulta sobre tus datos podés escribirme a <a href="mailto:sanso.s@outlook.com">sanso.s@outlook.com</a>.</p>
@@ -194,7 +167,7 @@
 </div>
 <div>
 <h2>Cookies</h2>
-<p>Google Analytics y Microsoft Clarity guardan cookies en tu navegador para distinguir una visita de otra y medir la sesión (por ejemplo, <code class="font-mono-data text-mono-data">_ga</code>, <code class="font-mono-data text-mono-data">_clck</code> y <code class="font-mono-data text-mono-data">_clsk</code>). Podés bloquearlas o borrarlas desde la configuración de tu navegador; el sitio sigue funcionando igual.</p>
+<p>Google Analytics y Microsoft Clarity guardan cookies en tu navegador para distinguir una visita de otra y medir la sesión (por ejemplo, <code class="text-small font-medium">_ga</code>, <code class="text-small font-medium">_clck</code> y <code class="text-small font-medium">_clsk</code>). Podés bloquearlas o borrarlas desde la configuración de tu navegador; el sitio sigue funcionando igual.</p>
 </div>
 <div>
 <h2>Servicios de terceros</h2>
@@ -226,22 +199,20 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-container-highest border-t border-outline-variant full-width">
-<div class="max-w-max-width mx-auto px-margin-page-mobile md:px-margin-page py-section-v-md flex flex-col md:flex-row justify-between items-center gap-grid-gap">
-<div class="font-section-h2 text-section-h2 font-black text-primary text-center md:text-left">
-        Sabrina Sanso
-        <span class="block font-body-small text-body-small text-on-surface-variant mt-2 font-normal"><span style="letter-spacing: -0.32px;">© 2026 Sabrina Sanso. Todos los derechos reservados</span></span>
+<footer class="bg-fondo-elevado border-t border-borde">
+<div class="max-w-max-width mx-auto px-space-3 md:px-space-4 py-space-4 flex flex-col md:flex-row justify-between items-center gap-space-3">
+<div class="text-center md:text-left">
+<p class="text-xl font-bold text-titulo">Sabrina Sanso</p>
+<p class="text-small text-texto-suave mt-1">© 2026 Sabrina Sanso. Todos los derechos reservados</p>
 </div>
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 items-center">
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sabrina Sanso (se abre en una nueva pestaña)">LinkedIn</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bitácora IT (se abre en una nueva pestaña)">Instagram</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sabrina Sanso (se abre en una nueva pestaña)">GitHub</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-ui-action text-ui-action" href="mailto:sanso.s@outlook.com" aria-label="Email: enviar correo electrónico a Sabrina Sanso">Email</a>
-<a class="text-secondary font-ui-action text-ui-action" href="politica-de-privacidad.html" aria-current="page">Privacidad</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://www.linkedin.com/in/sabrinasanso/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sabrina Sanso (se abre en una nueva pestaña)">LinkedIn</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://www.instagram.com/bitacorait/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Bitácora IT (se abre en una nueva pestaña)">Instagram</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="https://github.com/sabrinas01" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Sabrina Sanso (se abre en una nueva pestaña)">GitHub</a>
+<a class="text-ui text-texto-suave hover:text-titulo transition-colors" href="mailto:sanso.s@outlook.com" aria-label="Email: enviar correo electrónico a Sabrina Sanso">Email</a>
+<a class="text-ui text-titulo underline decoration-acento decoration-2 underline-offset-4" href="politica-de-privacidad.html" aria-current="page">Privacidad</a>
 </div>
-<div class="font-mono-data text-mono-data text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined text-sm! text-secondary" aria-hidden="true">location_on</span> San Juan, Argentina
-      </div>
+<p class="text-small text-texto-suave flex items-center gap-2"><span class="material-symbols-outlined text-sm! text-acento" aria-hidden="true">location_on</span> San Juan, Argentina</p>
 </div>
 </footer>
 </body>
