@@ -72,7 +72,7 @@ El PRD exige WCAG 2.1 AA. Las 3 páginas pasan axe-core sin violaciones; manten�
 
 ## Analítica
 
-- GA4 (`G-LJFKG629HC`) y Microsoft Clarity (`xzx7i06ova`) están en el `<head>` de cada página. Si cambia un ID, reemplazalo en las 4 páginas (el de GA4 aparece 2 veces por página).
+- GA4 (`G-LJFKG629HC`) y Microsoft Clarity (`ytqqzs6u98`) están en el `<head>` de cada página. Si cambia un ID, reemplazalo en las 4 páginas (el de GA4 aparece 2 veces por página).
 - El tracking de clics es declarativo. Agregá `data-track="nombre_evento"` a un elemento (o una lista separada por comas para varios eventos), y opcionalmente `data-track-params='{"clave":"valor"}'` (JSON entre comillas simples). Un script inline llama a `gtag("event", …)` al hacer clic.
 - Eventos actuales:
   - `clic_nav_seccion` y `clic_header_charlemos` (en el menú mobile llevan además `"location":"menu_mobile"`)
