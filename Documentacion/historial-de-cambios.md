@@ -6,6 +6,22 @@ Las versiones son 0.x porque el sitio todavía no está publicado. La 1.0.0 qued
 
 ---
 
+## Versión 0.9.0
+
+**Fecha de actualización:** 6 de octubre de 2026
+
+- **Auditoría de seguridad** del sitio, del workflow de despliegue y de la configuración del repo.
+  - **Por qué:** el sitio ya está publicado y el repo es público.
+- **Nuevas propiedades de GA4 (`G-LJFKG629HC`) y de Clarity (`ytqqzs6u98`)**, creadas desde cero para la URL de GitHub Pages.
+  - **Por qué:** decisión de Sabri, para que las métricas arranquen limpias con el sitio nuevo y no se mezclen con las de la landing de Lovable.
+- **Content-Security-Policy en las 4 páginas.** Es una lista de los únicos dominios desde los que el sitio puede cargar scripts, estilos, fuentes, imágenes y conexiones. También bloquea formularios, iframes y plugins.
+  - **Por qué:** si alguien lograra inyectar un script de otro origen (por ejemplo, si un tercero se viera comprometido), el navegador no lo ejecutaría. Se agregó como `<meta>` porque GitHub Pages no permite configurar cabeceras HTTP. Se probó que no bloquea Tailwind, las fuentes, GA4 ni Clarity.
+- **Política de referrer** `strict-origin-when-cross-origin`.
+  - **Por qué:** cuando alguien sale del sitio hacia un link externo, el otro sitio solo recibe el dominio y no la ruta completa.
+- **Workflow de despliegue reforzado:** las actions quedan fijadas a un commit exacto y pasan a versiones nuevas (sin Node 20). Además, el checkout no guarda credenciales y el job tiene un tiempo máximo.
+  - **Por qué:** una etiqueta como `v4` se puede mover para que apunte a otro código, y un commit no. Node 20 está deprecado en GitHub Actions.
+- **Lo que ya estaba bien y no se tocó:** todos los links externos tienen `noopener`, no hay recursos sin HTTPS, no hay JavaScript que procese datos del usuario, el HTTPS está forzado en GitHub Pages, y el repo tiene activos el escaneo de secretos y la protección contra subir secretos.
+
 ## Versión 0.8.0
 
 **Fecha de actualización:** 6 de octubre de 2026
