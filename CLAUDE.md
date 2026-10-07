@@ -11,13 +11,15 @@ El alcance y las decisiones de producto están en [Documentacion/LeanPRD.md](Doc
 ## Stack
 
 - HTML estático, sin framework y sin tests. El único paso de build es compilar el CSS de Tailwind.
-- **Tailwind 3.4.17 compilado** (no el CDN). La configuración está en `tailwind.config.js` (única fuente), la entrada en `src/tailwind.css` y la salida en `assets/css/tailwind.css`, que cada página enlaza con un `<link>`. Los plugins son `@tailwindcss/forms` y `@tailwindcss/container-queries`, igual que tenía el CDN.
+- **Tailwind 4.3.0 compilado** con `@tailwindcss/cli` (no el CDN). No hay `tailwind.config.js`: la configuración está en `src/tailwind.css` (única fuente), con los tokens en el bloque `@theme`. La salida es `assets/css/tailwind.css`, que cada página enlaza con un `<link>`. El único plugin es `@tailwindcss/forms`; las container queries ya vienen incluidas en v4.
+  - Las versiones están fijadas en 4.3.0 a propósito: desde la 4.3.1, `@tailwindcss/cli` depende de una versión de `@parcel/watcher` que arrastra una vulnerabilidad de `braces`. Antes de subir de versión, corré `npm audit`.
+  - En v4 las utilidades van dentro de `@layer utilities`, y cualquier CSS sin capa les gana. Por eso los íconos de Material Symbols (cuyo CSS de Google Fonts fija `font-size: 24px` sin capa) llevan los tamaños con `!`: `text-base!`, `text-sm!`. Lo mismo pasa con las reglas del `<style>` de cada página.
+  - `src/tailwind.css` tiene reglas de compatibilidad con v3 (color de borde por defecto y `cursor: pointer` en botones).
   - **Después de agregar o cambiar clases en un HTML, corré `npm run build:css`** (o `npm run watch:css` mientras editás). Si no, la clase nueva no tiene estilo en local. El workflow vuelve a compilar antes de publicar, así que lo publicado nunca queda desactualizado.
   - Commiteá también `assets/css/tailwind.css`, para que el sitio se pueda ver en local sin instalar nada.
   - El CSS se compila **sin `--minify`**: el minificador convertía los colores con transparencia (por ejemplo `bg-surface/90`) a `hsla()` y los redondeaba. GitHub Pages ya los comprime al enviarlos.
   - No pongas dos utilidades que pisan la misma propiedad en el mismo elemento (por ejemplo `text-ui-action` y `text-base`): el CSS compilado decide cuál gana por el orden de las reglas, no por el orden de las clases en el HTML.
   - Dentro de `class`, escribí los caracteres tal cual y no como entidades HTML: `before:content-['>']`, nunca `content-['&gt;']`. El compilador lee el texto del archivo y no reconoce la entidad.
-  - `npm audit` reporta vulnerabilidades de denegación de servicio en dependencias de Tailwind 3 (`braces`, `postcss-selector-parser`). Solo afectan a la compilación, que procesa nuestros propios HTML, y no llegan al sitio publicado. No hay arreglo dentro de Tailwind 3; se resuelven migrando a Tailwind 4.
 - Las fuentes vienen de Google Fonts: Rubik (texto y títulos), JetBrains Mono (eyebrows, acciones de UI y datos) y Material Symbols Outlined (íconos).
 - Para verlo localmente: `npm install` (una sola vez), `npm run build:css`, y servir la carpeta con un servidor estático, por ejemplo `npx serve .`.
 
@@ -55,7 +57,7 @@ La navegación de escritorio es `hidden md:flex`. En mobile hay un botón hambur
 
 ## Tokens de diseño
 
-La config de Tailwind define una paleta oscura estilo Material 3 (clase `dark` en `<html>`): `primary`, `secondary` (#8dd4c0, el color de acento), `surface-*`, `on-surface*`, `outline-variant`, `teal-accent`, entre otros. También define pares tipográficos semánticos que se usan juntos, por ejemplo `font-display-h1 text-display-h1`, `font-section-h2 text-section-h2`, `font-mono-eyebrow text-mono-eyebrow`, `font-body-main text-body-main`, `font-body-small`, `font-ui-action`, `font-mono-data` y `font-card-h3`. Los tokens de espaciado incluyen `max-w-max-width` (1080px), `px-margin-page`, `py-section-v-md`/`-lg` y `gap-grid-gap`. Usá estos tokens en lugar de valores arbitrarios.
+El `@theme` de `src/tailwind.css` define una paleta oscura estilo Material 3 (clase `dark` en `<html>`): `primary`, `secondary` (#8dd4c0, el color de acento), `surface-*`, `on-surface*`, `outline-variant`, `teal-accent`, entre otros. También define pares tipográficos semánticos que se usan juntos, por ejemplo `font-display-h1 text-display-h1`, `font-section-h2 text-section-h2`, `font-mono-eyebrow text-mono-eyebrow`, `font-body-main text-body-main`, `font-body-small`, `font-ui-action`, `font-mono-data` y `font-card-h3`. Los tokens de espaciado incluyen `max-w-max-width` (1080px), `px-margin-page`, `py-section-v-md`/`-lg` y `gap-grid-gap`. Usá estos tokens en lugar de valores arbitrarios.
 
 Clases CSS propias:
 
